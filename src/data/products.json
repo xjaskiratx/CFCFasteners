@@ -1,0 +1,152 @@
+[
+    {
+        "id": "bolt-1",
+        "name": "Hexagon Head Bolt DIN 931",
+        "category": "bolts",
+        "material": "Stainless Steel 316",
+        "grade": "8.8",
+        "standard": "DIN 931",
+        "description": "High tensile hex head bolt for heavy-duty applications.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "bolt-2",
+        "name": "Socket Head Cap Screw DIN 912",
+        "category": "bolts",
+        "material": "Alloy Steel",
+        "grade": "12.9",
+        "standard": "DIN 912",
+        "description": "High-strength precision fastener suitable for tight spaces.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "bolt-3",
+        "name": "U-Bolt with Nuts DIN 3570",
+        "category": "bolts",
+        "material": "Galvanized Steel",
+        "grade": "4.6",
+        "standard": "DIN 3570",
+        "description": "Standard U-bolt used primarily for supporting pipework.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "nut-1",
+        "name": "Heavy Hex Nut ASME B18.2.2",
+        "category": "nuts",
+        "material": "Carbon Steel",
+        "grade": "10",
+        "standard": "ASME B18.2.2",
+        "description": "Heavy hex nuts providing increased strength in structural joints.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "nut-2",
+        "name": "Nylon Insert Lock Nut DIN 985",
+        "category": "nuts",
+        "material": "Stainless Steel",
+        "grade": "A2-70",
+        "standard": "DIN 985",
+        "description": "Prevents loosening under vibration and torque.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "nut-3",
+        "name": "Flange Nut DIN 6923",
+        "category": "nuts",
+        "material": "Alloy Steel",
+        "grade": "8",
+        "standard": "DIN 6923",
+        "description": "Integrated washer flange to distribute pressure over a wider area.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "washer-1",
+        "name": "Spring Lock Washer DIN 127",
+        "category": "washers",
+        "material": "Spring Steel",
+        "grade": "-",
+        "standard": "DIN 127",
+        "description": "Provides constant tension to prevent fasteners from vibrating loose.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "washer-2",
+        "name": "Flat Washer DIN 125",
+        "category": "washers",
+        "material": "Stainless Steel 304",
+        "grade": "-",
+        "standard": "DIN 125",
+        "description": "Standard flat washer for load distribution and surface protection.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "washer-3",
+        "name": "Square Taper Washer",
+        "category": "washers",
+        "material": "Hot Dip Galvanized",
+        "grade": "-",
+        "standard": "DIN 434",
+        "description": "Used with U-profile sections to compensate for lack of parallelism.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "screw-1",
+        "name": "Countersunk Machine Screw",
+        "category": "screws",
+        "material": "Brass",
+        "grade": "-",
+        "standard": "DIN 965",
+        "description": "Cross recessed countersunk flat head screw for a flush finish.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "screw-2",
+        "name": "Self Tapping Screw",
+        "category": "screws",
+        "material": "Case Hardened Steel",
+        "grade": "-",
+        "standard": "DIN 7981",
+        "description": "Pan head Phillips self-tapping screw for sheet metal.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "screw-3",
+        "name": "Wood Screw",
+        "category": "screws",
+        "material": "Yellow Zinc Plated",
+        "grade": "-",
+        "standard": "DIN 97",
+        "description": "Slotted countersunk head wood screw for timber framing.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "custom-1",
+        "name": "Precision Turned Shaft",
+        "category": "custom",
+        "material": "Brass",
+        "grade": "CuZn39Pb3",
+        "standard": "Custom Outline",
+        "description": "Custom precision turned component tailored to specific tolerances.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "custom-2",
+        "name": "Threaded Rod Spacer",
+        "category": "custom",
+        "material": "Aluminum",
+        "grade": "6061-T6",
+        "standard": "Custom",
+        "description": "Lightweight standoff spacer with internal threading.",
+        "imageUrl": "/CFC.png"
+    },
+    {
+        "id": "custom-3",
+        "name": "Special Head Cap Assembly",
+        "category": "custom",
+        "material": "Titanium",
+        "grade": "Grade 5",
+        "standard": "Custom Outline",
+        "description": "High-performance aerospace bespoke fastener assembly.",
+        "imageUrl": "/CFC.png"
+    }
+]

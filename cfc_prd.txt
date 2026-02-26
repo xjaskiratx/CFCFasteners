@@ -1,0 +1,483 @@
+CFC Fasteners Website - Product Requirements Document
+Executive Summary
+CFC Fasteners, a leading nuts and bolts manufacturer based in Ludhiana, Punjab, India, requires a comprehensive full-stack website to streamline product showcase, customer inquiries, and lead generation[1]. The site combines a professional dark red/maroon and white design with an integrated RFQ (Request for Quote) modal system, WhatsApp Cloud API integration, and a content management system (CMS) for scalable product management[2][3].
+This PRD details the website's architecture, features, technical specifications, product data structure, and design guidelines to enable development teams to build a premium, user-friendly platform aligned with industry standards for fastener manufacturers[4][5].
+Company Background
+CFC Fasteners is a fastener manufacturing company based in Baba Mukand Singh Nagar, Ludhiana, Punjab (PIN: 141012), India. The company manufactures and supplies high-quality bolts, nuts, washers, and other precision fasteners for construction, automotive, machinery, and industrial applications[1]. The website serves buyers across India and international markets seeking quality fasteners with technical specifications and compliance certifications.
+Objectives
+	•	Showcase Products: Display a comprehensive catalog of nuts, bolts, and fasteners with detailed technical specifications.
+	•	Enable Quick Inquiries: Provide seamless RFQ functionality allowing buyers to request quotes directly via WhatsApp.
+	•	Scalable Product Management: Implement a CMS for admins/developers to add, edit, and manage products without code changes.
+	•	Brand Authority: Project professionalism and quality through a premium design reflecting industry standards (ISO, ASTM, DIN certifications)[4].
+	•	Lead Generation: Integrate WhatsApp Cloud API to convert inquiries into direct business owner interactions[2].
+Key Features
+1. Homepage
+	•	Hero Section: Compelling banner with company tagline, high-quality fastener imagery, and prominent "Request Quote" CTA.
+	•	Featured Products Carousel: CMS-managed rotating display of top-selling or new products.
+	•	Certifications Section: Display ISO 9001, IATF 16949, DIN, ASTM compliance badges[5].
+	•	Value Propositions: Brief sections highlighting quality, reliability, and quick delivery.
+	•	Call-to-Action Buttons: Links to product catalog and contact page.
+2. Product Catalog
+	•	Categorized Navigation: Filter by product type (hex bolts, hex nuts, washers, screws, lock nuts, etc.)[3].
+	•	Grid/List View Toggle: User-selectable display preferences.
+	•	Product Cards: Display product image, name, size/diameter, material, grade, and "Request Quote" button per product.
+	•	Advanced Filters: Filter by size, material (steel/stainless), grade, standards, finish.
+	•	Search Bar: Full-text search across product names, sizes, and specifications[3].
+	•	Pagination/Infinite Scroll: Smooth browsing for large catalogs.
+3. RFQ Modal System (Core Innovation)
+	•	Trigger: "Request Quote" button on each product card auto-populates product details.
+	•	Auto-filled Fields:
+	•	Product name/type
+	•	Size/diameter
+	•	Material
+	•	Grade/property class
+	•	Standards compliance (e.g., IS 1367, ASTM F568, DIN 934)
+	•	Product image
+	•	User Input Fields:
+	•	Quantity required
+	•	Full name
+	•	Email address
+	•	Phone number
+	•	WhatsApp number
+	•	Company name
+	•	Use case/application
+	•	Additional message or special requirements
+	•	Modal Behavior:
+	•	Smooth slide-in animation on product button click.
+	•	Accessible close button (X) and outside-click dismiss.
+	•	Form validation before submission.
+	•	Loading state during WhatsApp submission.
+	•	Submission Action:
+	•	Submit button triggers WhatsApp Cloud API integration.
+	•	Sends formatted message with all RFQ details to business owner's WhatsApp.
+	•	Success confirmation message and redirect to WhatsApp chat link (optional).
+	•	Close modal on submission or user dismissal; both trigger WhatsApp send.
+4. About/Company Information Page
+	•	Company Overview: History, mission, vision, manufacturing facilities (Ludhiana-based)[1].
+	•	Certifications & Compliance: Display ISO 9001, IATF 16949, DIN, ASTM, and other relevant standards with descriptions[5].
+	•	Team/Leadership: Brief bios of key personnel.
+	•	Testimonials/Case Studies: Client success stories from construction, automotive, industrial sectors.
+	•	Manufacturing Capability: Production capacity, turnaround times, quality assurance processes.
+5. Contact Page
+	•	Contact Form: Name, email, phone, message; similar to RFQ but for general inquiries.
+	•	Direct Contact Info: Phone number, email, WhatsApp link, physical address (Ludhiana).
+	•	Location Map: Embedded Google Maps showing office/facility location in Ludhiana.
+	•	Office Hours: Availability information.
+6. Navigation
+	•	Fixed Navbar: Persistent across all pages.
+	•	Logo (left) with company name.
+	•	Menu items: Home, Products (dropdown with categories), About, Contact.
+	•	Mobile hamburger menu (responsive design).
+	•	Optional search icon linking to product search.
+	•	Breadcrumb Navigation: On category/product pages for clarity.
+	•	Smooth Scroll: Page transitions and internal anchor links.
+7. Persistent Footer
+	•	Contact Information:
+	•	Address: Baba Mukand Singh Nagar, Ludhiana, Punjab, 141012, India.
+	•	Phone: [Business phone number].
+	•	Email: [Business email].
+	•	WhatsApp: Direct link to WhatsApp chat.
+	•	Quick Links: Home, Products, About, Contact.
+	•	Social Media: LinkedIn, Instagram, Facebook icons with links.
+	•	Developer Credits: "Built by [Developer Name/Team]" or "Website Design & Development".
+	•	Policies: Links to Privacy Policy, Terms of Service (optional).
+	•	Copyright: © [Year] CFC Fasteners. All rights reserved.
+8. CMS (Content Management System)
+Admin Dashboard
+	•	Secure Login: JWT-based authentication for admins/developers.
+	•	Product Management:
+	•	Add Product: Form with all specification fields (see Product Specifications section).
+	•	Edit Product: Modify existing product details, images, pricing.
+	•	Delete Product: Remove discontinued products with soft-delete option.
+	•	Bulk Actions: CSV import/export for batch product updates.
+	•	Category Management: Add, edit, delete product categories (bolts, nuts, screws, etc.).
+	•	Media Library: Upload, organize, and manage product images with crop/optimize tools.
+	•	Analytics Dashboard: View RFQ submissions, traffic sources, popular products, conversion rates.
+	•	Content Management: Edit homepage banners, testimonials, company info without frontend code changes.
+	•	User Management: Basic role-based access (admin/developer/viewer) for team collaboration.
+Product Data Structure
+Every product entry in the CMS requires the following fields for display and RFQ auto-fill:
+Field
+Type
+Required
+Description
+Example
+Product Name
+Text
+Yes
+Full product name
+Hex Bolt M16 x 100
+SKU/Code
+Text
+Yes
+Unique product identifier
+HB-M16-100-SS
+Category
+Dropdown
+Yes
+Product type
+Bolts, Nuts, Screws, Washers
+Size/Diameter
+Text
+Yes
+Nominal diameter per standard
+M6, M8, M10, M16, M20, M24 (metric) or 1/4", 3/8", 1/2" (imperial)
+Length/Height
+Text
+Conditional
+Overall length (for bolts/screws) or height (for nuts)
+20mm, 50mm, 100mm, 150mm
+Thread Pitch
+Text
+Conditional
+Coarse or fine thread spacing
+1.5mm (coarse), 1.0mm (fine)
+Material
+Dropdown
+Yes
+Base composition per ASTM/IS standards
+Carbon Steel, Stainless Steel 304/316, Alloy Steel, Galvanized Steel
+Grade/Property Class
+Text
+Yes
+Strength classification per standards
+5.6, 8.8, 10.9 (metric) or Grade 2, Grade 5, Grade 8 (imperial); ASTM A563 Grade A/C for nuts
+Weight
+Decimal
+No
+Weight per unit or per 1000 pieces (in kg)
+0.05 kg, 2.5 kg per 1000 pcs
+Standard Compliance
+Multi-select
+Yes
+Applicable standards
+IS 1367, ASTM F568, DIN 934, ISO 4026, ISO 7040
+Finish/Coating
+Dropdown
+Yes
+Surface treatment
+Zinc-plated, Hot-dip galvanized, Stainless (passivated), Black oxide, Polished
+Tensile Strength
+Text
+No
+Max tensile load in MPa (mechanical properties)
+400 MPa, 800 MPa
+Use Cases/Applications
+Multi-checkbox
+Yes
+Industry/application types
+Construction, Automotive, Machinery, Infrastructure, Railways, DIY, Assembly
+Product Description
+Rich Text
+No
+Detailed marketing description
+"Premium hex bolts designed for structural connections in heavy construction, meeting IS 1367 standards for superior load-bearing capacity."
+Primary Image
+File Upload
+Yes
+High-quality product photo (multiple angles recommended)
+[Image file, JPG/PNG, min 1200x1200px]
+Additional Images
+Multi-file Upload
+No
+Gallery images for zoom/carousel
+[Multiple image files]
+Price (Optional)
+Decimal
+No
+Unit pricing or MOQ pricing
+2.50 (per piece) or 2000.00 (per 1000 pcs)
+Stock Status
+Dropdown
+No
+Availability indicator
+In Stock, Limited Stock, Out of Stock, Made-to-order
+Lead Time
+Text
+No
+Estimated delivery timeframe
+3-5 days, 1-2 weeks
+Specifications PDF
+File Upload
+No
+Downloadable spec sheet or datasheet
+[PDF file]
+Meta Title
+Text
+No
+SEO title tag (60 chars max)
+Hex Bolts M16 Grade 8.8 - High Tensile Fasteners
+Meta Description
+Text
+No
+SEO description (160 chars max)
+Premium grade 8.8 hex bolts compliant with DIN 933 and ASTM standards. Bulk quantities available.
+SEO Keywords
+Text
+No
+Comma-separated keywords for search optimization
+hex bolts, M16, grade 8.8, industrial fasteners
+Status
+Dropdown
+Yes
+Publication status
+Published, Draft, Archived
+Date Created/Updated
+Timestamp
+Auto
+System-generated timestamps
+Auto-populated
+
+CMS Technical Features
+	•	WYSIWYG Editor: Rich text editor for product descriptions and content without HTML coding.
+	•	Image Optimization: Automatic compression and resizing for web performance.
+	•	Versioning: Track product changes with rollback capability.
+	•	Scheduled Publishing: Queue products for future publication.
+	•	SEO Tools: Auto-generate sitemaps, meta tags, schema markup for Google indexing.
+	•	Activity Logs: Audit trail of all product changes (who/what/when) for accountability.
+Design Guidelines
+Color Scheme
+	•	Primary Color (Maroon): #8B0000 (dark red/maroon)
+	•	Use for: Headers, navbar, primary buttons, accents, CTA buttons
+	•	Secondary Color (White): #FFFFFF
+	•	Use for: Background, text on maroon, cards
+	•	Accent Color (Light Gray): #F5F5F5 or #E8E8E8
+	•	Use for: Borders, dividers, hover states, secondary backgrounds
+	•	Text Color: #333333 (dark gray) on light backgrounds; #FFFFFF on maroon backgrounds
+	•	Error/Alert Color: #DC143C (crimson) for validation messages
+	•	Success Color: #28A745 (green) for confirmations
+Typography
+	•	Font Family: Sans-serif (Roboto, Inter, or similar for readability)
+	•	Headings: Bold, uppercase or title-case for hierarchy (H1: 32-40px, H2: 24-28px, H3: 18-22px)
+	•	Body Text: Regular weight, 14-16px line-height 1.6 for readability
+	•	Buttons: Semi-bold, 14-16px
+Layout & Spacing
+	•	Responsive Design: Mobile-first approach (320px, 768px, 1024px, 1440px breakpoints)
+	•	Grid System: 12-column layout for consistency
+	•	Whitespace: Generous margins and padding for premium feel; minimum 16px gutters
+	•	Cards: White background with subtle shadow (#0000 0 2px 8px), maroon borders optional
+	•	Buttons: Rounded corners (4-8px border-radius), clear hover/active states
+Visual References
+Inspired by premium fastener manufacturer websites:
+	•	boltsandnuts.com: Clean product grids, professional photography, organized categories[2]
+	•	centuryfasteners.com: Brand-focused hero, certification badges, prominent contact CTA[2]
+	•	midwestfastener.com: Minimalist design, easy navigation, search-prominent layout[3]
+Accessibility (WCAG 2.1 Level AA)
+	•	Alt Text: Every product image has descriptive alt text (e.g., "M16 Grade 8.8 Hex Bolt Side View")
+	•	Keyboard Navigation: All interactive elements accessible via Tab, Enter, Esc
+	•	Focus Indicators: Visible focus rings (outline or highlight) on buttons and links
+	•	Color Contrast: Minimum 4.5:1 ratio for text; 3:1 for graphics/UI components
+	•	Form Labels: Explicit labels for all input fields; error messages linked to fields via aria-describedby
+Technical Architecture
+Frontend
+	•	Framework: React.js or Next.js for component-based UI and SEO optimization
+	•	State Management: Redux or Context API for RFQ modal state and form data
+	•	Styling: Tailwind CSS or styled-components for consistent theming
+	•	Animations: Framer Motion or React Spring for smooth modal/page transitions
+	•	Image Optimization: Next.js Image component or similar for lazy loading and responsive sizes
+	•	Form Validation: React Hook Form + Zod for robust form handling and validation
+Backend
+	•	Runtime: Node.js with Express.js framework
+	•	Database: MongoDB (flexible, document-based) or PostgreSQL (relational, ACID-compliant)
+	•	ORM/ODM: Mongoose (MongoDB) or Sequelize/TypeORM (PostgreSQL)
+	•	Authentication: JWT (JSON Web Tokens) for CMS login; Bcrypt for password hashing
+	•	API Architecture: RESTful API with clear endpoints (/api/products, /api/rfq, /api/categories, /api/auth, /api/cms, etc.) or GraphQL for advanced querying
+Integrations
+	•	WhatsApp Cloud API: POST requests to send RFQ details to business owner's WhatsApp
+	•	Authentication: Meta Business Account API key
+	•	Payload: RFQ form data formatted as message template
+	•	Response Handling: Success/failure feedback to user
+	•	Error Handling: Retry logic, fallback to email if WhatsApp fails
+	•	Cloud Storage: Cloudinary or AWS S3 for product image hosting and optimization
+	•	Email Service (Optional Backup): SendGrid or Mailgun for email notifications if WhatsApp unavailable
+	•	Google Analytics: Tracking page views, RFQ submissions, user behavior for insights[5]
+	•	Google Maps API: Embedded map on contact page showing Ludhiana office location
+Hosting & Deployment
+	•	Frontend: Vercel, Netlify, or AWS CloudFront for fast CDN delivery and auto-scaling
+	•	Backend: Heroku, AWS EC2/ECS, DigitalOcean, or Railway for reliable server-side execution
+	•	Database: MongoDB Atlas (managed cloud), AWS RDS, or self-hosted with backups
+	•	SSL/HTTPS: Mandatory for all pages; auto-renewing Let's Encrypt or AWS Certificate Manager
+Performance Targets
+	•	Page Load Time: <3 seconds (Lighthouse score >90)
+	•	Core Web Vitals: LCP <2.5s, FID <100ms, CLS <0.1
+	•	Mobile Responsiveness: Fully functional on iOS/Android devices
+	•	Image Optimization: Responsive images with WebP format support
+	•	Code Splitting: Lazy load modal, product pages, CMS dashboard separately
+	•	Caching: Browser caching for static assets (1 year), API response caching (5-15 min)
+Security
+	•	Input Validation: Server-side validation for all forms (RFQ, contact, CMS)
+	•	CSRF Protection: CSRF tokens for form submissions
+	•	Rate Limiting: API rate limiting (e.g., 100 req/min per IP) to prevent abuse
+	•	CAPTCHA: Optional reCAPTCHA v3 on RFQ/contact forms to reduce spam
+	•	Data Encryption: HTTPS for all traffic; password hashing with Bcrypt; sensitive data encryption at rest
+	•	OWASP Compliance: Regular security audits; SQL injection, XSS, and injection prevention
+	•	CMS Access Control: Role-based permissions; audit logs for all admin actions
+	•	Backup Strategy: Daily automated backups of database and media files; disaster recovery plan
+Maintenance & Scalability
+	•	Version Control: Git (GitHub/GitLab) for code management and collaboration
+	•	CI/CD Pipeline: GitHub Actions or GitLab CI for automated testing and deployment
+	•	Monitoring: Sentry for error tracking, New Relic or Datadog for performance monitoring
+	•	Logging: Structured logging (Winston, Pino) for troubleshooting and debugging
+	•	Documentation: API documentation (Swagger/OpenAPI), deployment guides, code comments
+	•	Modular Code: Clean architecture for easy future updates (e.g., adding new product categories, features)
+Product Specifications Reference
+This section defines the data structure for all products in the CMS. Each product must include the following attributes based on fastener industry standards (ASTM, IS, DIN):
+Common Fastener Types & Key Specifications
+Hex Bolts / Hex Head Bolts[3]
+	•	Key Fields: Size (M6-M24), Length, Material (carbon/stainless), Grade (5.6/8.8/10.9), Finish (zinc-plated/galvanized), Standard (IS 1367, DIN 931/933, ASTM F307)
+	•	Use Cases: Construction, heavy machinery, automotive, infrastructure[3]
+	•	Typical Specs: M10x50, Grade 8.8, Zinc-plated, 0.12 kg per unit
+Hex Nuts[3]
+	•	Key Fields: Size, Material, Grade (ASTM A563 Grade A/B/C), Pitch (coarse/fine), Finish, Weight per 1000 pcs
+	•	Standards: IS 1364, DIN 934, ASTM F594
+	•	Use Cases: Fastening with bolts, structural connections[3]
+	•	Typical Specs: M10, Stainless Steel 304, Grade A, Coarse, 0.45 kg per 1000 pcs
+Lock Nuts[3]
+	•	Key Fields: Size, Type (nylon insert, deformed thread), Material, Grade, Standard (DIN 985, ASTM F594)
+	•	Use Cases: Vibration resistance, automotive, machinery[3]
+	•	Typical Specs: M8, Nylon insert, Steel, Grade 8, Zinc-plated
+Flat Washers[3]
+	•	Key Fields: Size (fits bolt size), Material, Finish, Standards (IS 1301, DIN 125, ASTM F844)
+	•	Use Cases: Load distribution, insulation, vibration damping[3]
+	•	Typical Specs: M10, Carbon Steel, Zinc-plated, 0.08 kg per unit
+Screws (Machine, Wood, Self-Tapping)[3]
+	•	Key Fields: Size, Thread type, Drive type (Phillips, slot, hex), Length, Material, Finish
+	•	Standards: ISO 1207, DIN 84, ASTM F837
+	•	Use Cases: General assembly, automotive, DIY[3]
+	•	Typical Specs: 6x50mm, Phillips head, Stainless Steel, Polished
+Stud Bolts / Studs
+	•	Key Fields: Diameter, Length, Material, Grade, End type, Standards
+	•	Use Cases: Structural composite construction (shear connector studs), pressure vessels, flanges
+	•	Typical Specs: 16mm dia x 100mm, Grade 50, Welded head
+Product Data Entry Workflow
+	•	Admin logs into CMS dashboard.
+	•	Clicks "Add Product" or "Bulk Import".
+	•	Fills in all required fields (marked with *) and optional fields.
+	•	Uploads high-quality product images (min 1200x1200px, multiple angles).
+	•	Selects categories, standards, use cases from predefined lists.
+	•	Reviews auto-generated SEO title/description or customizes.
+	•	Sets product status to "Draft" for review or "Published" for immediate visibility.
+	•	Saves; product appears on website catalog and becomes selectable in RFQ modals.
+User Flows
+User Flow 1: Browse Products & Submit RFQ
+	•	User lands on homepage → Views featured products/certifications.
+	•	Clicks "Explore Products" or navigates via navbar to "Products".
+	•	Browses product catalog; filters by category, size, material.
+	•	Selects a product (e.g., M16 Grade 8.8 Hex Bolt).
+	•	Clicks "Request Quote" button → RFQ modal opens with auto-filled product details.
+	•	Enters quantity, name, email, phone, WhatsApp number, company, use case.
+	•	Clicks "Submit" → Modal sends RFQ data to WhatsApp Cloud API.
+	•	Success message displays; modal closes or redirects to WhatsApp chat link.
+	•	Business owner receives WhatsApp message with RFQ details; responds directly to customer.
+User Flow 2: General Inquiry
+	•	User navigates to "Contact" page via navbar.
+	•	Fills contact form (name, email, message).
+	•	Submits → Message sent via email or WhatsApp backup.
+	•	Confirmation message displays.
+User Flow 3: Admin Product Management
+	•	Admin logs into CMS dashboard via secure login.
+	•	Navigates to "Products" section.
+	•	Clicks "Add Product" → Form with all specification fields opens.
+	•	Fills product details (name, size, material, grade, images, etc.).
+	•	Selects categories, standards, use cases from dropdowns/checkboxes.
+	•	Uploads product images; system auto-optimizes.
+	•	Reviews auto-generated SEO tags or customizes.
+	•	Sets status to "Published".
+	•	Saves → Product immediately visible on website catalog and RFQ modals.
+	•	For edits: Clicks product → Updates fields → Saves changes; version history recorded.
+User Flow 4: Mobile RFQ (Responsive)
+	•	Mobile user browses products on smartphone.
+	•	Product cards display essential specs (size, material, grade).
+	•	Taps "Request Quote" → Modal optimized for mobile opens.
+	•	Auto-filled fields display; scrollable form for user inputs.
+	•	Taps "Submit" → RFQ sent to WhatsApp; confirmation displays.
+	•	Modal auto-closes or offers link to WhatsApp chat for continued conversation.
+Non-Functional Requirements
+Performance
+	•	Page Load: <3 seconds for homepage; <2 seconds for product pages (Lighthouse >90).
+	•	Database Queries: Optimized indexes; queries execute <500ms.
+	•	API Response Time: RFQ submission <2 seconds; product fetch <1 second.
+	•	Image Optimization: Responsive images; WebP format for modern browsers; lazy loading below fold.
+Scalability
+	•	Traffic Handling: Support 1000+ concurrent users without degradation.
+	•	Database Scaling: Horizontal scaling (MongoDB sharding) or read replicas (PostgreSQL) for growth.
+	•	CDN: Global content delivery for images and static assets.
+	•	Caching Layers: Redis for frequently accessed data (product lists, categories).
+Reliability & Availability
+	•	Uptime SLA: 99.5% minimum (measured monthly).
+	•	Failover: Automated backup database replicas; fallback email if WhatsApp API unavailable.
+	•	Backups: Daily automated backups; 30-day retention; disaster recovery plan tested quarterly.
+	•	Error Handling: Graceful degradation; user-friendly error messages; no 500 errors exposed to users.
+Security
+	•	Data Protection: GDPR/data privacy compliance (e.g., consent forms for WhatsApp).
+	•	PCI DSS (If payments added later): Compliance ready; no payment data storage on server.
+	•	Penetration Testing: Annual security audits; OWASP Top 10 compliance.
+	•	Incident Response: Documented procedures for data breaches or security incidents.
+Accessibility (WCAG 2.1 Level AA)
+	•	Screen Readers: Semantic HTML; ARIA labels; alt text for all images.
+	•	Keyboard Navigation: Full Tab/Shift+Tab navigation; skip links for main content.
+	•	Color Contrast: 4.5:1 minimum for text (exceptions: decorative, large text 3:1).
+	•	Focus Management: Modal focus trap; focus restoration on close.
+	•	Form Accessibility: Labels, error messages, inline validation feedback.
+Localization (Multi-language Support Optional)
+	•	Primary Language: English (required for launch).
+	•	Secondary Language: Hindi (optional for Indian market expansion).
+	•	Implementation: i18n library (e.g., next-i18next) for easy translation management.
+SEO
+	•	Meta Tags: Dynamic title, description, keywords per product/page.
+	•	Structured Data: Schema markup for products, organization, local business (JSON-LD).
+	•	Sitemap: Auto-generated XML sitemap; submitted to Google Search Console.
+	•	Mobile Optimization: Mobile-friendly design; fast load times.
+	•	Backlinks: Content marketing strategy (blog, case studies) for domain authority.
+Analytics & Monitoring
+	•	Google Analytics 4: Track pageviews, RFQ conversions, user journey.
+	•	Error Tracking: Sentry for frontend/backend errors; real-time alerts.
+	•	Performance Monitoring: New Relic or Datadog; alerts for slow API responses, high CPU.
+	•	Logging: Structured logs (JSON format) for debugging; centralized log aggregation (ELK stack optional).
+Maintainability
+	•	Code Quality: Linting (ESLint), code formatting (Prettier); CI/CD pipeline enforces standards.
+	•	Testing Coverage: >80% unit test coverage; integration tests for API and CMS.
+	•	Documentation: API docs (Swagger), deployment guides, architecture diagrams, README.
+	•	Knowledge Transfer: Code comments, architecture documentation for team continuity.
+Project Scope & Constraints
+In Scope
+	•	Full-stack website with responsive design (mobile, tablet, desktop).
+	•	Product catalog with CMS management.
+	•	RFQ modal system with WhatsApp Cloud API integration.
+	•	Navigation, About, Contact pages.
+	•	Persistent navbar and footer.
+	•	Admin CMS dashboard for product management.
+	•	Basic analytics and error monitoring.
+	•	SSL/HTTPS and security best practices.
+Out of Scope (Future Enhancements)
+	•	Payment gateway integration (e.g., Stripe, Razorpay) for direct e-commerce.
+	•	Inventory management system with warehouse tracking.
+	•	Customer accounts/login for order history.
+	•	Email marketing automation (e.g., Mailchimp).
+	•	Multi-language support (Hindi, regional languages).
+	•	Advanced CRM features (customer relationship management).
+	•	Offline functionality (PWA service workers).
+	•	Video tutorials or 3D product visualization.
+	•	Blog or knowledge base (can be added later with CMS update).
+Constraints
+	•	Budget: Align with CFC Fasteners' budget allocation for web development.
+	•	Timeline: Define project phases (Phase 1: MVP; Phase 2: Advanced features).
+	•	Team Expertise: Ensure development team has experience with React/Node.js, WhatsApp APIs, and CMS design.
+	•	WhatsApp Business Account: CFC Fasteners must have active WhatsApp Business Account and Cloud API credentials before launch.
+	•	Content: CFC to provide product images, specifications, company info, certifications for initial population.
+Success Metrics
+	•	User Engagement: Track product page views, time on page, RFQ conversion rate (target: >5%).
+	•	RFQ Submissions: Measure volume of RFQs submitted via modal; track submission success rate (target: >95%).
+	•	Website Performance: Maintain Lighthouse score >90; page load time <3 seconds.
+	•	Mobile Adoption: >40% of traffic from mobile devices; mobile conversion rate tracked separately.
+	•	SEO Ranking: Organic search traffic trending upward; target ranking in top 3 for "[fastener type] + Ludhiana".
+	•	Customer Satisfaction: Monitor feedback on website usability; aim for >4/5 star rating if review feature added.
+	•	Technical Health: <0.1% error rate; 99.5% uptime; zero security incidents.
+References
+[1] Jaikara Fasteners. (2015). Fasteners Manufacturers in Ludhiana | Automotive Fasteners India. Retrieved from https://jaikarafasteners.com
+[2] Search Results for Premium Nuts and Bolts Company Websites. (2025-2026). BoltsandNuts.com, Century Fasteners Corp. Retrieved from https://boltsandnuts.com, https://www.centuryfasteners.com
+[3] Fastener Technical Specifications and Types Guide. (2025). Comprehensive guide to different types of nuts and bolts, including hex bolts, nuts, washers, lock nuts, and their applications. Retrieved from https://www.fastenere.com/blog, https://onlyscrews.in
+[4] Fastener Standards and Certifications: ISO 9001, IATF 16949, DIN, ASTM. (2025). Industry standards documentation from Jignesh Steel and IIIB Fastener. Retrieved from https://www.iiibearfastener.com/new/Fastener-Standards.html
+[5] Industry-Specific Standards for Fasteners and CMS Practices. (2024-2026). World of Steel, Know Your GST, and industry best practices for CMS integration and product data management. Retrieved from https://www.worldofsteel.com/pages/industry-specific-standards-and-certifications-for-fasteners, https://www.knowyourgst.com
+
+Document Version: 1.0 Last Updated: February 22, 2026 Status: Ready for Development Audience: CFC Fasteners Leadership, Development Team, Project Stakeholders
