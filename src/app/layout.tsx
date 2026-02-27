@@ -18,6 +18,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CFC Fasteners | Premium Industrial Fasteners",
   description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+  icons: {
+    icon: [
+      { url: '/CFC.png', type: 'image/png' },
+      { url: '/BrandMark.svg', type: 'image/svg+xml' }
+    ],
+    apple: [
+      { url: '/CFC.png' }
+    ]
+  }
 };
 
 export default function RootLayout({
