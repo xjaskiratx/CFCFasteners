@@ -39,7 +39,7 @@ export default async function CatalogPage({
     const activeCategoryName = categories.find((c) => c.id === activeCategory)?.name || "All Products";
 
     return (
-        <div className="bg-zinc-50 dark:bg-black min-h-screen relative pb-16 lg:pb-24">
+        <div className="bg-zinc-50 dark:bg-black min-h-screen flex flex-col w-full">
             {/* Hero Section with 3D Background */}
             <section id="catalog-hero" className="relative overflow-hidden bg-zinc-950 text-white pt-24 pb-12 sm:pt-32 sm:pb-16">
                 <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
@@ -92,7 +92,7 @@ export default async function CatalogPage({
                 <RippleBackground />
                 {/* Top Fade Transition from Sticky Header */}
                 <div className="absolute top-0 left-0 w-full h-16 lg:h-24 bg-linear-to-b from-zinc-50/95 dark:from-black/95 to-transparent z-10 pointer-events-none"></div>
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-24 relative z-10">
                     {/* Active Category Title */}
                     <div className="mb-8">
                         <h2 className="text-3xl font-bold text-white capitalize">
@@ -140,9 +140,9 @@ export default async function CatalogPage({
                         )}
                     </div>
                 </div>
+                {/* Bottom Fade Transition into Footer */}
+                <div className="absolute bottom-0 left-0 w-full h-16 lg:h-24 bg-linear-to-t from-zinc-100 dark:from-zinc-900 to-transparent z-10 pointer-events-none"></div>
             </div>
-            {/* Bottom Fade Transition into Footer */}
-            <div className="absolute bottom-0 left-0 w-full h-16 lg:h-24 bg-linear-to-t from-zinc-100 dark:from-zinc-900 to-transparent z-10 pointer-events-none"></div>
         </div>
     );
 }
