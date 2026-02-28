@@ -7,6 +7,7 @@ import QuoteButton from "@/components/QuoteButton";
 import ClientBackgrounds from "@/components/ClientBackgrounds";
 
 export default function Home() {
+  const featuredProducts = productsData.slice(0, 6);
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
@@ -140,7 +141,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
-            {productsData.slice(0, 6).map((product: any) => (
+            {featuredProducts.map((product: any) => (
               <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-white/60 dark:bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
                 <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
                   <Image

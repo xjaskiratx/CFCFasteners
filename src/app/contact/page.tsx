@@ -11,6 +11,7 @@ import ClientBackgrounds from "@/components/ClientBackgrounds";
 
 export default function ContactPage() {
     const [method, setMethod] = useState<"email" | "whatsapp">("email");
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -48,6 +49,7 @@ export default function ContactPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmitStatus("idle");
 
         try {
             const res = await fetch('https://formspree.io/f/xjgelpnn', {
@@ -67,12 +69,16 @@ export default function ContactPage() {
                 })
             });
             const data = await res.json();
-            if (data.error) {
-                console.error("Formspree submission error:", data.error);
+            if (data.error || !res.ok) {
+                console.error("Formspree submission error:", data.error || res.statusText);
+                setSubmitStatus("error");
+            } else {
+                setSubmitStatus("success");
             }
         } catch (err) {
             // Client fetch caught (ad-blocker or dropped connection)
             console.warn("Failed to ping /api/rfq endpoint:", err);
+            setSubmitStatus("error");
         }
 
         if (method === "whatsapp") {
@@ -81,7 +87,9 @@ export default function ContactPage() {
             window.open(url, "_blank", "noopener,noreferrer");
         } else {
             // Formspree handles the email, no need to open local mail app.
-            alert("Message sent successfully! We will get back to you soon.");
+            if (submitStatus !== "error") {
+                alert("Message sent successfully! We will get back to you soon.");
+            }
             setFormData({ name: "", email: "", phone: "+91 ", company: "", productName: "", quantity: "", message: "" });
         }
     };
@@ -149,6 +157,16 @@ export default function ContactPage() {
                     <div className="rounded-[2rem] bg-white dark:bg-black p-6 sm:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
                         <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-6 text-center">Send a Message</h3>
                         <form onSubmit={handleSubmit} className="space-y-5">
+                            {submitStatus === "success" && (
+                                <div className="rounded-md border border-green-200 bg-green-50 px-4 py-2 text-sm text-green-700">
+                                    Message sent successfully.
+                                </div>
+                            )}
+                            {submitStatus === "error" && (
+                                <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-700">
+                                    Message failed to send by email. You can still contact us via WhatsApp.
+                                </div>
+                            )}
                             {/* Method Toggle */}
                             <div className="flex bg-zinc-100 dark:bg-zinc-900/60 p-1.5 rounded-full mb-6 relative border border-zinc-200/50 dark:border-zinc-800/50">
                                 <button

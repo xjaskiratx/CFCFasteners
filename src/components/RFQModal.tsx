@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuote } from "./QuoteContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -22,6 +22,7 @@ type RFQFormValues = z.infer<typeof rfqSchema>;
 
 export default function RFQModal() {
     const { isOpen, closeQuote, prefillProduct } = useQuote();
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<RFQFormValues>({
         resolver: zodResolver(rfqSchema),
@@ -32,6 +33,7 @@ export default function RFQModal() {
     useEffect(() => {
         if (isOpen) {
             reset({ productName: prefillProduct, name: "", email: "", phone: "+91 ", company: "", quantity: "", message: "" });
+            setSubmitStatus("idle");
 
             // Smart IP detection for country code
             const fetchIp = async () => {
@@ -52,6 +54,7 @@ export default function RFQModal() {
     }, [prefillProduct, isOpen, reset, setValue]);
 
     const onSubmit = async (data: RFQFormValues) => {
+        setSubmitStatus("idle");
         try {
             const res = await fetch('https://formspree.io/f/xjgelpnn', {
                 method: 'POST',
@@ -70,11 +73,15 @@ export default function RFQModal() {
                 })
             });
             const respData = await res.json();
-            if (respData.error) {
-                console.error("Formspree submission error:", respData.error);
+            if (respData.error || !res.ok) {
+                console.error("Formspree submission error:", respData.error || res.statusText);
+                setSubmitStatus("error");
+            } else {
+                setSubmitStatus("success");
             }
         } catch (err) {
             console.warn("Failed to ping /api/rfq endpoint:", err);
+            setSubmitStatus("error");
             // Continue to WhatsApp anyway so the user request isn't lost
         }
 
@@ -114,6 +121,16 @@ export default function RFQModal() {
 
                         <form onSubmit={handleSubmit(onSubmit)} className="p-6">
                             <div className="space-y-4">
+                                {submitStatus === "success" && (
+                                    <div className="rounded-md border border-green-200 bg-green-50 px-4 py-2 text-sm text-green-700">
+                                        Request sent successfully.
+                                    </div>
+                                )}
+                                {submitStatus === "error" && (
+                                    <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-700">
+                                        Request failed to send by email. We will still open WhatsApp so you can proceed.
+                                    </div>
+                                )}
                                 <div>
                                     <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Product</label>
                                     <input
