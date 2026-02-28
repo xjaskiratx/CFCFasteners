@@ -80,7 +80,7 @@ export default function RFQModal() {
 
         const text = `*New RFQ from CFC Fasteners Website*%0A%0A*Name:* ${data.name}%0A*Company:* ${data.company || 'N/A'}%0A*Email:* ${data.email}%0A*Phone:* ${data.phone}%0A*Product:* ${data.productName}%0A*Quantity:* ${data.quantity}%0A*Message:* ${data.message || 'N/A'}`;
         const whatsappUrl = `https://wa.me/919646506000?text=${text}`; // Changed to client's Indian number since +91 was shown
-        window.open(whatsappUrl, '_blank');
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
         closeQuote();
     };
 

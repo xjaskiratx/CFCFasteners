@@ -78,7 +78,7 @@ export default function ContactPage() {
         if (method === "whatsapp") {
             const text = `Hi, I'm ${formData.name}.\n\n${formData.message}`;
             const url = `https://wa.me/919646506000?text=${encodeURIComponent(text)}`; // Changed to client's Indian number
-            window.open(url, '_blank');
+            window.open(url, "_blank", "noopener,noreferrer");
         } else {
             // Formspree handles the email, no need to open local mail app.
             alert("Message sent successfully! We will get back to you soon.");
