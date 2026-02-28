@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
-import HeroAnimatedBackground from "@/components/HeroAnimatedBackground";
+import ClientBackgrounds from "@/components/ClientBackgrounds";
 // Supabase import removed; using Formspree instead
 
 // Removed metadata export as it conflicts with "use client" in the same file. Instead, we would handle SEO in a layout or wrapper, but since this is page.tsx and now client-side, we can drop metadata or move it.
@@ -88,7 +88,7 @@ export default function ContactPage() {
 
     return (
         <div className="bg-white dark:bg-zinc-950 min-h-screen py-16 sm:py-24 relative pb-24 lg:pb-32 overflow-hidden">
-            <HeroAnimatedBackground />
+            <ClientBackgrounds showHero />
             <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
                 <div className="mx-auto max-w-2xl text-center">
                     <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">

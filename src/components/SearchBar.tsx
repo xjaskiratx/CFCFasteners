@@ -117,6 +117,7 @@ export default function SearchBar() {
                                                     src={product.imageUrl}
                                                     alt={product.name}
                                                     fill
+                                                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                                                     className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                                                 />
                                             </div>

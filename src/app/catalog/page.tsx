@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Filter } from "lucide-react";
 import QuoteButton from "@/components/QuoteButton";
-import HeroAnimatedBackground from "@/components/HeroAnimatedBackground";
-import RippleBackground from "@/components/RippleBackground";
+import ClientBackgrounds from "@/components/ClientBackgrounds";
 export const metadata = {
     title: "Product Catalog | CFC Fasteners",
     description: "Browse our extensive catalog of premium industrial bolts, nuts, screws, anchors, and hooks.",
@@ -43,7 +42,7 @@ export default async function CatalogPage({
             {/* Hero Section with 3D Background */}
             <section id="catalog-hero" className="relative overflow-hidden bg-zinc-950 text-white pt-24 pb-12 sm:pt-32 sm:pb-16">
                 <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
-                <HeroAnimatedBackground />
+                <ClientBackgrounds showHero />
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="flex flex-col gap-6 drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
                         {/* Full Width Hero Text */}
@@ -89,7 +88,7 @@ export default async function CatalogPage({
 
             {/* Product Grid Section */}
             <div className="relative w-full min-h-screen">
-                <RippleBackground />
+                <ClientBackgrounds showRipple />
                 {/* Top Fade Transition from Sticky Header */}
                 <div className="absolute top-0 left-0 w-full h-16 lg:h-24 bg-linear-to-b from-zinc-50/95 dark:from-black/95 to-transparent z-10 pointer-events-none"></div>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-24 relative z-10">
@@ -108,6 +107,7 @@ export default async function CatalogPage({
                                         src={product.imageUrl}
                                         alt={product.name}
                                         fill
+                                        sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                                         className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                                     />
                                 </div>

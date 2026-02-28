@@ -99,6 +99,8 @@ export default function RippleBackground() {
         const spacing = 45;
         const rippleFrequency = 0.015;
         let animationFrameId: number;
+        let isVisible = true;
+        let isInView = true;
 
         let particles: Dot[] = [];
         let ripples: Ripple[] = [];
@@ -121,6 +123,10 @@ export default function RippleBackground() {
 
         function animate() {
             if (!ctx || !canvas) return;
+            if (!isVisible || !isInView) {
+                animationFrameId = requestAnimationFrame(animate);
+                return;
+            }
 
             // Solid fill background to maintain color consistency
             ctx.fillStyle = '#0d0e10';
@@ -143,6 +149,20 @@ export default function RippleBackground() {
 
         window.addEventListener('resize', init);
 
+        const handleVisibilityChange = () => {
+            isVisible = document.visibilityState === 'visible';
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        const intersectionObserver = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0];
+                isInView = Boolean(entry?.isIntersecting);
+            },
+            { root: null, threshold: 0.1 }
+        );
+        intersectionObserver.observe(canvas);
+
         const resizeObserver = new ResizeObserver(() => {
             init();
         });
@@ -155,6 +175,8 @@ export default function RippleBackground() {
 
         return () => {
             window.removeEventListener('resize', init);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            intersectionObserver.disconnect();
             resizeObserver.disconnect();
             cancelAnimationFrame(animationFrameId);
         };
@@ -163,8 +185,7 @@ export default function RippleBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 z-0 pointer-events-none h-full w-full"
-            style={{ display: 'block' }}
+            className="absolute inset-0 z-0 pointer-events-none h-full w-full block"
         />
     );
 }

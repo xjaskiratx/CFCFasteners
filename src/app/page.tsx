@@ -4,8 +4,7 @@ import { ArrowRight, Box, ShieldCheck, Factory } from "lucide-react";
 import SearchBar from "@/components/SearchBar";
 import productsData from "@/data/products.json";
 import QuoteButton from "@/components/QuoteButton";
-import HeroAnimatedBackground from "@/components/HeroAnimatedBackground";
-import RippleBackground from "@/components/RippleBackground";
+import ClientBackgrounds from "@/components/ClientBackgrounds";
 
 export default function Home() {
   return (
@@ -13,7 +12,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative bg-zinc-950 text-white pt-24 pb-8 sm:pt-32 sm:pb-12">
         <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
-        <HeroAnimatedBackground />
+        <ClientBackgrounds showHero />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
           {/* Left Column Text Content */}
           <div className="w-full lg:w-[48%] drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
@@ -55,6 +54,7 @@ export default function Home() {
                 src="/CFC.png"
                 alt="CFC Fasteners Brand Logo"
                 fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover rounded-3xl"
                 priority
               />
@@ -130,7 +130,7 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="relative w-full min-h-screen">
-        <RippleBackground />
+        <ClientBackgrounds showRipple />
         {/* Top Fade Transition */}
         <div className="absolute top-0 left-0 w-full h-20 lg:h-32 bg-linear-to-b from-white dark:from-black via-white/50 dark:via-black/50 to-transparent z-10 pointer-events-none"></div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-16 sm:pt-12 sm:pb-24 relative z-10">
@@ -140,13 +140,14 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
-            {[...productsData].sort(() => 0.5 - Math.random()).slice(0, 6).map((product: any) => (
+            {productsData.slice(0, 6).map((product: any) => (
               <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-white/60 dark:bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
                 <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
                   <Image
                     src={product.imageUrl}
                     alt={product.name}
                     fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

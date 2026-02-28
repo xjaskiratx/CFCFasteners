@@ -1,5 +1,6 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Hexagon } from "lucide-react";
 
 // A custom "Bolt" icon built from SVG
@@ -21,6 +22,7 @@ const Nut = ({ className }: { className?: string }) => (
 );
 
 export default function HeroAnimatedBackground() {
+    const rootRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll();
 
     // Parallax mappings
@@ -34,8 +36,40 @@ export default function HeroAnimatedBackground() {
     const rotate3 = useTransform(scrollY, [0, 1000], [0, 180]);
     const rotate4 = useTransform(scrollY, [0, 1000], [0, -360]);
 
+    useEffect(() => {
+        const node = rootRef.current;
+        if (!node) return;
+
+        const handleVisibilityChange = () => {
+            if (document.visibilityState !== "visible") {
+                node.style.visibility = "hidden";
+            } else {
+                node.style.visibility = "visible";
+            }
+        };
+
+        const intersectionObserver = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0];
+                node.style.visibility = entry?.isIntersecting ? "visible" : "hidden";
+            },
+            { root: null, threshold: 0.1 }
+        );
+
+        intersectionObserver.observe(node);
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        return () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            intersectionObserver.disconnect();
+        };
+    }, []);
+
     return (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen opacity-25">
+        <div
+            ref={rootRef}
+            className="absolute inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen opacity-25"
+        >
             <motion.div style={{ y: y1, rotate: rotate1 }} className="absolute top-[10%] left-[5%] text-primary blur-[3px] scale-150">
                 <Nut className="w-32 h-32" />
             </motion.div>
