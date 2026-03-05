@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Filter } from "lucide-react";
 import QuoteButton from "@/components/QuoteButton";
 import ClientBackgrounds from "@/components/ClientBackgrounds";
+import ProductCard, { Product } from "@/components/ProductCard";
+
 export const metadata = {
     title: "Product Catalog | CFC Fasteners",
     description: "Browse our extensive catalog of premium industrial bolts, nuts, screws, anchors, and hooks.",
@@ -18,7 +20,7 @@ export default async function CatalogPage({
     const activeCategory = resolvedParams?.category || "all";
     const searchQuery = resolvedParams?.q?.toLowerCase() || "";
 
-    const filteredProducts = productsData.filter((p: any) => {
+    const filteredProducts: Product[] = (productsData as Product[]).filter((p) => {
         const matchesCategory = activeCategory === "all" ? true : p.category === activeCategory;
         const matchesQuery = searchQuery
             ? p.name.toLowerCase().includes(searchQuery) || p.description.toLowerCase().includes(searchQuery)
@@ -121,35 +123,8 @@ export default async function CatalogPage({
                                                 </h3>
                                             </div>
                                             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
-                                                {categoryProducts.map((product: any) => (
-                                                    <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
-                                                        <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
-                                                            <Image
-                                                                src={product.imageUrl}
-                                                                alt={product.name}
-                                                                fill
-                                                                sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                                                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                                                            />
-                                                        </div>
-                                                        <div className="flex flex-1 flex-col p-6 text-left">
-                                                            <h3 className="text-lg font-semibold text-white">
-                                                                {product.name}
-                                                            </h3>
-                                                            <div className="mt-2 flex items-center gap-4 text-sm text-zinc-400">
-                                                                <span className="bg-zinc-800 px-2 py-1 rounded text-xs font-medium text-white">
-                                                                    {product.standard}
-                                                                </span>
-                                                                <span className="text-zinc-300">{product.material}</span>
-                                                            </div>
-                                                            <p className="mt-4 text-sm text-zinc-400 flex-1 line-clamp-2">
-                                                                {product.description}
-                                                            </p>
-                                                            <div className="mt-6 border-t border-zinc-800 pt-6">
-                                                                <QuoteButton productName={product.name} />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                {categoryProducts.map((product) => (
+                                                    <ProductCard key={product.id} product={product} />
                                                 ))}
                                             </div>
                                         </div>
@@ -160,35 +135,8 @@ export default async function CatalogPage({
                         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
                             {filteredProducts
                                 .sort((a, b) => a.name.localeCompare(b.name))
-                                .map((product: any) => (
-                                    <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
-                                        <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
-                                            <Image
-                                                src={product.imageUrl}
-                                                alt={product.name}
-                                                fill
-                                                sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                                            />
-                                        </div>
-                                        <div className="flex flex-1 flex-col p-6 text-left">
-                                            <h3 className="text-lg font-semibold text-white">
-                                                {product.name}
-                                            </h3>
-                                            <div className="mt-2 flex items-center gap-4 text-sm text-zinc-400">
-                                                <span className="bg-zinc-800 px-2 py-1 rounded text-xs font-medium text-white">
-                                                    {product.standard}
-                                                </span>
-                                                <span className="text-zinc-300">{product.material}</span>
-                                            </div>
-                                            <p className="mt-4 text-sm text-zinc-400 flex-1 line-clamp-2">
-                                                {product.description}
-                                            </p>
-                                            <div className="mt-6 border-t border-zinc-800 pt-6">
-                                                <QuoteButton productName={product.name} />
-                                            </div>
-                                        </div>
-                                    </div>
+                                .map((product) => (
+                                    <ProductCard key={product.id} product={product} />
                                 ))}
                             {filteredProducts.length === 0 && (
                                 <div className="col-span-full py-12 text-center">

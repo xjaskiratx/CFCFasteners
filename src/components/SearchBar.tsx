@@ -2,10 +2,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import productsData from "@/data/products.json";
-import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
-import QuoteButton from "./QuoteButton";
+import ProductCard, { Product } from "./ProductCard";
 
 const ANIMATION_ITEMS = ["bolts", "nuts", "screws", "anchors", "hooks"];
 
@@ -80,6 +79,7 @@ export default function SearchBar() {
                         onChange={(e) => setQuery(e.target.value)}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
+                        aria-label="Search products"
                         className="block w-full p-4 pl-14 text-sm text-zinc-900 border border-zinc-700 rounded-full bg-white/80 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary dark:bg-zinc-900/80 dark:border-zinc-800 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-primary/50 dark:focus:border-primary transition-all duration-300 outline-none backdrop-blur-md"
                         placeholder={placeholder}
                     />
@@ -110,31 +110,8 @@ export default function SearchBar() {
                                     </Link>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                    {searchResults.map((product: any) => (
-                                        <div key={product.id} className="group relative flex flex-col overflow-hidden rounded-xl bg-zinc-50 dark:bg-zinc-900 shadow-sm border border-zinc-200 dark:border-zinc-800 hover:border-primary/50 transition-all duration-300">
-                                            <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none h-40 relative overflow-hidden">
-                                                <Image
-                                                    src={product.imageUrl}
-                                                    alt={product.name}
-                                                    fill
-                                                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                                                    className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                                                />
-                                            </div>
-                                            <div className="flex flex-1 flex-col p-4 text-left">
-                                                <h3 className="text-base font-semibold text-zinc-900 dark:text-white line-clamp-1">
-                                                    {product.name}
-                                                </h3>
-                                                <div className="mt-1 flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
-                                                    <span className="bg-zinc-200 dark:bg-zinc-800 px-1.5 py-0.5 rounded font-medium text-zinc-700 dark:text-zinc-300">
-                                                        {product.standard}
-                                                    </span>
-                                                </div>
-                                                <div className="mt-4">
-                                                    <QuoteButton productName={product.name} />
-                                                </div>
-                                            </div>
-                                        </div>
+                                    {searchResults.map((product: Product) => (
+                                        <ProductCard key={product.id} product={product} />
                                     ))}
                                 </div>
                             </div>

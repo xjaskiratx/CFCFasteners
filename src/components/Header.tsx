@@ -41,6 +41,7 @@ export default function Header() {
                 <div className="flex items-center md:hidden gap-4">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle mobile menu"
                         className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
