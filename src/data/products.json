@@ -1,152 +1,152 @@
 [
     {
-        "id": "bolt-1",
-        "name": "Hexagon Head Bolt DIN 931",
-        "category": "bolts",
-        "material": "Stainless Steel 316",
-        "grade": "8.8",
-        "standard": "DIN 931",
-        "description": "High tensile hex head bolt for heavy-duty applications.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "bolt-2",
-        "name": "Socket Head Cap Screw DIN 912",
-        "category": "bolts",
-        "material": "Alloy Steel",
-        "grade": "12.9",
-        "standard": "DIN 912",
-        "description": "High-strength precision fastener suitable for tight spaces.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "bolt-3",
-        "name": "U-Bolt with Nuts DIN 3570",
-        "category": "bolts",
-        "material": "Galvanized Steel",
-        "grade": "4.6",
-        "standard": "DIN 3570",
-        "description": "Standard U-bolt used primarily for supporting pipework.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "nut-1",
-        "name": "Heavy Hex Nut ASME B18.2.2",
-        "category": "nuts",
-        "material": "Carbon Steel",
-        "grade": "10",
-        "standard": "ASME B18.2.2",
-        "description": "Heavy hex nuts providing increased strength in structural joints.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "nut-2",
-        "name": "Nylon Insert Lock Nut DIN 985",
-        "category": "nuts",
-        "material": "Stainless Steel",
-        "grade": "A2-70",
-        "standard": "DIN 985",
-        "description": "Prevents loosening under vibration and torque.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "nut-3",
-        "name": "Flange Nut DIN 6923",
-        "category": "nuts",
-        "material": "Alloy Steel",
-        "grade": "8",
-        "standard": "DIN 6923",
-        "description": "Integrated washer flange to distribute pressure over a wider area.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "washer-1",
-        "name": "Spring Lock Washer DIN 127",
-        "category": "washers",
-        "material": "Spring Steel",
-        "grade": "-",
-        "standard": "DIN 127",
-        "description": "Provides constant tension to prevent fasteners from vibrating loose.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "washer-2",
-        "name": "Flat Washer DIN 125",
-        "category": "washers",
-        "material": "Stainless Steel 304",
-        "grade": "-",
-        "standard": "DIN 125",
-        "description": "Standard flat washer for load distribution and surface protection.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "washer-3",
-        "name": "Square Taper Washer",
-        "category": "washers",
-        "material": "Hot Dip Galvanized",
-        "grade": "-",
-        "standard": "DIN 434",
-        "description": "Used with U-profile sections to compensate for lack of parallelism.",
-        "imageUrl": "/CFC.png"
-    },
-    {
-        "id": "screw-1",
-        "name": "Countersunk Machine Screw",
+        "id": "black-drywall-screw",
+        "name": "Black Drywall Screw",
         "category": "screws",
-        "material": "Brass",
+        "material": "Hardened Steel",
         "grade": "-",
-        "standard": "DIN 965",
-        "description": "Cross recessed countersunk flat head screw for a flush finish.",
-        "imageUrl": "/CFC.png"
+        "standard": "-",
+        "description": "Black phosphate drywall screw.",
+        "imageUrl": "/BlackDrywallScrew.jpeg"
     },
     {
-        "id": "screw-2",
-        "name": "Self Tapping Screw",
+        "id": "chipboard-screw",
+        "name": "Chipboard Screw",
         "category": "screws",
-        "material": "Case Hardened Steel",
+        "material": "Steel",
         "grade": "-",
-        "standard": "DIN 7981",
-        "description": "Pan head Phillips self-tapping screw for sheet metal.",
+        "standard": "-",
+        "description": "High-quality chipboard screw.",
         "imageUrl": "/CFC.png"
     },
     {
-        "id": "screw-3",
-        "name": "Wood Screw",
+        "id": "csk-sds-screw",
+        "name": "CSK SDS Screw",
         "category": "screws",
-        "material": "Yellow Zinc Plated",
+        "material": "Steel",
         "grade": "-",
-        "standard": "DIN 97",
-        "description": "Slotted countersunk head wood screw for timber framing.",
+        "standard": "-",
+        "description": "Countersunk self-drilling screw.",
+        "imageUrl": "/CskSdsScrew.jpeg"
+    },
+    {
+        "id": "chrome-polish-drywall",
+        "name": "Chrome Polish Drywall",
+        "category": "screws",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Chrome polished drywall screw for aesthetic finish.",
         "imageUrl": "/CFC.png"
     },
     {
-        "id": "custom-1",
-        "name": "Precision Turned Shaft",
-        "category": "custom",
-        "material": "Brass",
-        "grade": "CuZn39Pb3",
-        "standard": "Custom Outline",
-        "description": "Custom precision turned component tailored to specific tolerances.",
-        "imageUrl": "/CFC.png"
+        "id": "truss-head-screw",
+        "name": "Truss Head Screw",
+        "category": "screws",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Wide-head truss screw for improved load distribution.",
+        "imageUrl": "/TrussHeadScrew.jpeg"
     },
     {
-        "id": "custom-2",
-        "name": "Threaded Rod Spacer",
-        "category": "custom",
-        "material": "Aluminum",
-        "grade": "6061-T6",
-        "standard": "Custom",
-        "description": "Lightweight standoff spacer with internal threading.",
-        "imageUrl": "/CFC.png"
+        "id": "self-drilling-screw",
+        "name": "Self Drilling Screw",
+        "category": "screws",
+        "material": "Hardened Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Self-drilling screw for quick metal fastening.",
+        "imageUrl": "/SelfDrillingScrew.jpeg"
     },
     {
-        "id": "custom-3",
-        "name": "Special Head Cap Assembly",
-        "category": "custom",
-        "material": "Titanium",
-        "grade": "Grade 5",
-        "standard": "Custom Outline",
-        "description": "High-performance aerospace bespoke fastener assembly.",
-        "imageUrl": "/CFC.png"
+        "id": "rawal-bolt",
+        "name": "Rawal Bolt",
+        "category": "anchors",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Heavy-duty expansion anchor.",
+        "imageUrl": "/RawalBolt.jpeg"
+    },
+    {
+        "id": "anchor-pin-bolt",
+        "name": "Anchor Pin Bolt",
+        "category": "anchors",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Anchor pin bolt for secure fastening.",
+        "imageUrl": "/AnchorPinBolt.jpeg"
+    },
+    {
+        "id": "drop-in-anchor",
+        "name": "Drop-in Anchor",
+        "category": "anchors",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Internally threaded drop-in expansion anchor.",
+        "imageUrl": "/DropInAnchor.jpeg"
+    },
+    {
+        "id": "wedge-anchor",
+        "name": "Wedge Anchor",
+        "category": "anchors",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Heavy-duty wedge anchor for concrete.",
+        "imageUrl": "/WedgeAnchor.jpeg"
+    },
+    {
+        "id": "hex-nut-bolt",
+        "name": "Hex Nut and Bolt",
+        "category": "bolts",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Standard hex head nut and bolt set.",
+        "imageUrl": "/HexNutAndBolt.jpeg"
+    },
+    {
+        "id": "shovel",
+        "name": "Shovel",
+        "category": "Other",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Digging tool.",
+        "imageUrl": "/Shovel.jpeg"
+    },
+    {
+        "id": "sleeve-anchors",
+        "name": "Sleeve Anchors",
+        "category": "anchors",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Sleeve anchor for versatile masonry fastening.",
+        "imageUrl": "/SleeveAnchors.jpeg"
+    },
+    {
+        "id": "threaded-bars",
+        "name": "Threaded Bars",
+        "category": "Other",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "Fully threaded steel rod.",
+        "imageUrl": "/ThreadedBars.jpeg"
+    },
+    {
+        "id": "d-hooks",
+        "name": "D Hooks",
+        "category": "hooks",
+        "material": "Steel",
+        "grade": "-",
+        "standard": "-",
+        "description": "D-shaped hook for secure hanging.",
+        "imageUrl": "/DHooks.jpeg"
     }
 ]

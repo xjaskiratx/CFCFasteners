@@ -32,7 +32,8 @@ export default async function CatalogPage({
         { id: "nuts", name: "Nuts" },
         { id: "screws", name: "Screws" },
         { id: "anchors", name: "Anchors" },
-        { id: "hooks", name: "Hooks" }
+        { id: "hooks", name: "Hooks" },
+        { id: "Other", name: "Other" }
     ];
 
     const activeCategoryName = categories.find((c) => c.id === activeCategory)?.name || "All Products";
@@ -99,46 +100,106 @@ export default async function CatalogPage({
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
-                        {filteredProducts.map((product: any) => (
-                            <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
-                                <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
-                                    <Image
-                                        src={product.imageUrl}
-                                        alt={product.name}
-                                        fill
-                                        sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                        className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                </div>
-                                <div className="flex flex-1 flex-col p-6 text-left">
-                                    <h3 className="text-lg font-semibold text-white">
-                                        {product.name}
-                                    </h3>
-                                    <div className="mt-2 flex items-center gap-4 text-sm text-zinc-400">
-                                        <span className="bg-zinc-800 px-2 py-1 rounded text-xs font-medium text-white">
-                                            {product.standard}
-                                        </span>
-                                        <span className="text-zinc-300">{product.material}</span>
+                    {/* Product Grid Section */}
+                    {activeCategory === "all" ? (
+                        <div className="space-y-16">
+                            {categories
+                                .filter((cat) => cat.id !== "all")
+                                .sort((a, b) => a.name.localeCompare(b.name))
+                                .map((cat) => {
+                                    const categoryProducts = filteredProducts
+                                        .filter((p: any) => p.category === cat.id)
+                                        .sort((a, b) => a.name.localeCompare(b.name));
+
+                                    if (categoryProducts.length === 0) return null;
+
+                                    return (
+                                        <div key={cat.id}>
+                                            <div className="mb-6 border-b border-zinc-800 pb-4">
+                                                <h3 className="text-2xl font-bold text-white tracking-wide">
+                                                    {cat.name}
+                                                </h3>
+                                            </div>
+                                            <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
+                                                {categoryProducts.map((product: any) => (
+                                                    <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
+                                                        <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
+                                                            <Image
+                                                                src={product.imageUrl}
+                                                                alt={product.name}
+                                                                fill
+                                                                sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                                                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                                                            />
+                                                        </div>
+                                                        <div className="flex flex-1 flex-col p-6 text-left">
+                                                            <h3 className="text-lg font-semibold text-white">
+                                                                {product.name}
+                                                            </h3>
+                                                            <div className="mt-2 flex items-center gap-4 text-sm text-zinc-400">
+                                                                <span className="bg-zinc-800 px-2 py-1 rounded text-xs font-medium text-white">
+                                                                    {product.standard}
+                                                                </span>
+                                                                <span className="text-zinc-300">{product.material}</span>
+                                                            </div>
+                                                            <p className="mt-4 text-sm text-zinc-400 flex-1 line-clamp-2">
+                                                                {product.description}
+                                                            </p>
+                                                            <div className="mt-6 border-t border-zinc-800 pt-6">
+                                                                <QuoteButton productName={product.name} />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
+                            {filteredProducts
+                                .sort((a, b) => a.name.localeCompare(b.name))
+                                .map((product: any) => (
+                                    <div key={product.id} className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
+                                        <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
+                                            <Image
+                                                src={product.imageUrl}
+                                                alt={product.name}
+                                                fill
+                                                sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                        </div>
+                                        <div className="flex flex-1 flex-col p-6 text-left">
+                                            <h3 className="text-lg font-semibold text-white">
+                                                {product.name}
+                                            </h3>
+                                            <div className="mt-2 flex items-center gap-4 text-sm text-zinc-400">
+                                                <span className="bg-zinc-800 px-2 py-1 rounded text-xs font-medium text-white">
+                                                    {product.standard}
+                                                </span>
+                                                <span className="text-zinc-300">{product.material}</span>
+                                            </div>
+                                            <p className="mt-4 text-sm text-zinc-400 flex-1 line-clamp-2">
+                                                {product.description}
+                                            </p>
+                                            <div className="mt-6 border-t border-zinc-800 pt-6">
+                                                <QuoteButton productName={product.name} />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p className="mt-4 text-sm text-zinc-400 flex-1 line-clamp-2">
-                                        {product.description}
-                                    </p>
-                                    <div className="mt-6 border-t border-zinc-800 pt-6">
-                                        <QuoteButton productName={product.name} />
-                                    </div>
+                                ))}
+                            {filteredProducts.length === 0 && (
+                                <div className="col-span-full py-12 text-center">
+                                    <p className="text-zinc-400 text-lg">No products found in this category.</p>
+                                    <Link href="/catalog" className="text-primary hover:underline mt-2 inline-block">
+                                        Clear filters
+                                    </Link>
                                 </div>
-                            </div>
-                        ))}
-                        {filteredProducts.length === 0 && (
-                            <div className="col-span-full py-12 text-center">
-                                <p className="text-zinc-400 text-lg">No products found in this category.</p>
-                                <Link href="/catalog" className="text-primary hover:underline mt-2 inline-block">
-                                    Clear filters
-                                </Link>
-                            </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
+                    )}
                 </div>
                 {/* Bottom Fade Transition into Footer */}
                 <div className="absolute bottom-0 left-0 w-full h-16 lg:h-24 bg-linear-to-t from-zinc-100 dark:from-zinc-900 to-transparent z-10 pointer-events-none"></div>

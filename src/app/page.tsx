@@ -19,7 +19,7 @@ export default function Home() {
           <div className="w-full lg:w-[48%] drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
             <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white drop-shadow-2xl leading-tight">
               Precision Fasteners for <br className="hidden sm:block" />
-              <span className="text-primary-light drop-shadow-md">Industrial Excellence</span>
+              <span className="text-primary-dark drop-shadow-md">Industrial Excellence</span>
             </h1>
             <p className="mt-6 text-xl leading-8 text-zinc-100 drop-shadow-lg font-medium">
               Premium manufacturer and global supplier of high-grade bolts, nuts, screws, anchors, and hooks. Build with confidence.
@@ -31,6 +31,7 @@ export default function Home() {
               <Link href="/catalog?category=screws" className="px-4 py-1.5 rounded-full bg-zinc-800/80 text-sm font-medium text-zinc-100 hover:bg-primary transition-all duration-300 hover:scale-105 transform shadow-sm hover:shadow-md hover:shadow-primary/20 border border-white/5 hover:border-transparent">Screws</Link>
               <Link href="/catalog?category=anchors" className="px-4 py-1.5 rounded-full bg-zinc-800/80 text-sm font-medium text-zinc-100 hover:bg-primary transition-all duration-300 hover:scale-105 transform shadow-sm hover:shadow-md hover:shadow-primary/20 border border-white/5 hover:border-transparent">Anchors</Link>
               <Link href="/catalog?category=hooks" className="px-4 py-1.5 rounded-full bg-zinc-800/80 text-sm font-medium text-zinc-100 hover:bg-primary transition-all duration-300 hover:scale-105 transform shadow-sm hover:shadow-md hover:shadow-primary/20 border border-white/5 hover:border-transparent">Hooks</Link>
+              <Link href="/catalog?category=Other" className="px-4 py-1.5 rounded-full bg-zinc-800/80 text-sm font-medium text-zinc-100 hover:bg-primary transition-all duration-300 hover:scale-105 transform shadow-sm hover:shadow-md hover:shadow-primary/20 border border-white/5 hover:border-transparent">Other</Link>
             </div>
             <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
               <Link
@@ -50,13 +51,14 @@ export default function Home() {
 
           {/* Right Column Brand Image */}
           <div className="w-full lg:w-[48%] flex justify-end items-center mt-12 lg:mt-0">
-            <div className="relative w-full max-w-lg aspect-video shadow-[0_0_80px_rgba(139,0,0,0.2)] rounded-3xl flex items-center justify-center overflow-hidden">
+            <div className="relative w-full max-w-lg flex items-center justify-center">
               <Image
                 src="/CFC.png"
                 alt="CFC Fasteners Brand Logo"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover rounded-3xl"
+                width={1600}
+                height={900}
+                quality={100}
+                className="w-full h-auto object-contain rounded-xl"
                 priority
               />
             </div>
@@ -137,7 +139,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-16 sm:pt-12 sm:pb-24 relative z-10">
           <div className="mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Featured Products</h2>
-            <p className="mt-4 text-lg text-zinc-300">Discover our most popular precision fasteners.</p>
+            <p className="mt-4 text-lg text-zinc-300">We deal in all types of screws.</p>
           </div>
 
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
