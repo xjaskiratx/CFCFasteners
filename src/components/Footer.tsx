@@ -19,7 +19,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-zinc-500">
-                        &copy; {new Date().getFullYear()} CFC Fasteners. All rights reserved.
+                        &copy; {new Date().getFullYear()} <span className="font-semibold text-zinc-700 dark:text-zinc-300">CFC Fasteners</span>. All rights reserved.
                     </p>
                     <p className="text-sm text-zinc-500">
                         Developed & Managed by <span className="font-semibold text-zinc-700 dark:text-zinc-300">JSX W&D</span>

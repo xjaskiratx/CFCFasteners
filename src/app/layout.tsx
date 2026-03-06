@@ -44,7 +44,7 @@ export default async function RootLayout({
       >
         <QuoteProvider>
           <Header />
-          <main className="grow">
+          <main className="grow flex flex-col">
             {children}
           </main>
           <Footer />
