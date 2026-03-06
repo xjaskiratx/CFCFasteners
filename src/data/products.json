@@ -17,7 +17,7 @@
         "grade": "-",
         "standard": "-",
         "description": "High-quality chipboard screw.",
-        "imageUrl": "/CFC.png"
+        "imageUrl": "/ChipboardScrew.jpg"
     },
     {
         "id": "csk-sds-screw",
@@ -37,7 +37,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Chrome polished drywall screw for aesthetic finish.",
-        "imageUrl": "/CFC.png"
+        "imageUrl": "/ChromePolishDrywall.png"
     },
     {
         "id": "truss-head-screw",
