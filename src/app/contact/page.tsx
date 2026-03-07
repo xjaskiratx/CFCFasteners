@@ -102,7 +102,7 @@ export default function ContactPage() {
                     <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
                         Contact Sales & Support
                     </h1>
-                    <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400 max-sm:text-justify max-sm:[text-align-last:center]">
                         Have a blueprint drawing or need a bulk quotation? Reach out to our direct manufacturing specialists.
                     </p>
                 </div>
@@ -187,7 +187,7 @@ export default function ContactPage() {
 
                             <div>
                                 <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Name *</label>
-                                <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="John Doe" />
+                                <input type="text" name="name" required minLength={3} value={formData.name} onChange={handleChange} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="John Doe" />
                             </div>
 
                             {method === "email" ? (
@@ -198,7 +198,7 @@ export default function ContactPage() {
                             ) : (
                                 <div>
                                     <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">WhatsApp Number *</label>
-                                    <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="+91 98765 43210" />
+                                    <input type="tel" name="phone" required minLength={10} value={formData.phone} onChange={handleChange} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="+91 98765 43210" />
                                 </div>
                             )}
 

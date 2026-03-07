@@ -9,9 +9,9 @@ import { X, MessageCircle } from "lucide-react";
 // Supabase import removed; using Formspree instead
 
 const rfqSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
+    name: z.string().min(3, "Name must be at least 3 characters"),
     email: z.string().email("Valid email is required"),
-    phone: z.string().min(5, "Phone is required"),
+    phone: z.string().refine((val) => val.replace(/\D/g, '').length >= 10, "Phone number must contain at least 10 digits"),
     company: z.string().optional(),
     productName: z.string().min(1, "Product is required"),
     quantity: z.string().min(1, "Quantity is required"),
