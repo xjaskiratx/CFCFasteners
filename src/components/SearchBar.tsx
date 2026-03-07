@@ -68,12 +68,13 @@ export default function SearchBar() {
 
     return (
         <div className="relative w-full">
-            <form onSubmit={handleSearch} className="relative mt-4 w-full flex items-center">
+            <form onSubmit={handleSearch} className="relative mt-4 w-full flex items-center" suppressHydrationWarning>
                 <div className="relative w-full shadow-2xl rounded-full group">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none z-10">
                         <Search className={`w-5 h-5 transition-colors duration-300 ${isFocused ? 'text-primary' : 'text-zinc-400'}`} />
                     </div>
                     <input
+                        suppressHydrationWarning
                         type="search"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}

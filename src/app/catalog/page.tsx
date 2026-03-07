@@ -49,11 +49,11 @@ export default async function CatalogPage({
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="flex flex-col gap-6 drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
                         {/* Full Width Hero Text */}
-                        <div className="w-full">
-                            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-white drop-shadow-2xl">
+                        <div className="w-full max-sm:-mt-6">
+                            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-white drop-shadow-2xl max-sm:text-center">
                                 Product Catalog
                             </h1>
-                            <p className="mt-4 text-xl leading-8 text-zinc-100 drop-shadow-lg font-medium max-w-3xl">
+                            <p className="mt-4 text-xl leading-8 text-zinc-100 drop-shadow-lg font-medium max-w-3xl max-sm:text-justify max-sm:[text-align-last:center]">
                                 Browse our inventory of premium industrial fasteners. Need something specific? Request a quote for custom dimensions.
                             </p>
                         </div>
@@ -68,17 +68,18 @@ export default async function CatalogPage({
             <div className="sticky top-16 z-40 bg-zinc-50/95 dark:bg-black/95 backdrop-blur-md py-4 transition-colors">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     {/* Left Aligned Categories */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 max-sm:w-full">
                         <Filter size={18} className="text-zinc-500 hidden sm:block" />
                         <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mr-2 hidden sm:block">Category:</span>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 max-sm:grid max-sm:grid-cols-3 max-sm:gap-2 max-sm:w-full">
                             {categories.map((cat) => (
                                 <Link
                                     key={cat.id}
                                     href={`/catalog?category=${cat.id}`}
-                                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 transform shadow-sm border cursor-pointer ${activeCategory === cat.id
-                                        ? "bg-primary text-white border-transparent shadow-md shadow-primary/20 scale-105"
-                                        : "bg-zinc-800/80 text-zinc-100 border-white/5 hover:bg-primary hover:border-transparent hover:shadow-md hover:shadow-primary/20 hover:scale-105"
+                                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 transform shadow-sm border cursor-pointer max-sm:w-full max-sm:text-center max-sm:px-2 max-sm:text-[11px] ${cat.id === "all" ? "max-sm:col-span-3 max-sm:text-sm max-sm:py-2" : ""
+                                        } ${activeCategory === cat.id
+                                            ? "bg-primary text-white border-transparent shadow-md shadow-primary/20 sm:scale-105"
+                                            : "bg-zinc-800/80 text-zinc-100 border-white/5 hover:bg-primary hover:border-transparent hover:shadow-md hover:shadow-primary/20 sm:hover:scale-105"
                                         }`}
                                 >
                                     {cat.name}
@@ -97,7 +98,7 @@ export default async function CatalogPage({
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-24 relative z-10">
                     {/* Active Category Title */}
                     <div className="mb-8">
-                        <h2 className="text-3xl font-bold text-white capitalize">
+                        <h2 className="text-3xl font-bold text-white capitalize max-sm:text-center">
                             {activeCategoryName}
                         </h2>
                     </div>
@@ -117,8 +118,8 @@ export default async function CatalogPage({
 
                                     return (
                                         <div key={cat.id}>
-                                            <div className="mb-6 border-b border-zinc-800 pb-4">
-                                                <h3 className="text-2xl font-bold text-white tracking-wide">
+                                            <div className="mb-6 border-b border-zinc-800 pb-4 max-sm:text-center">
+                                                <h3 className="text-2xl font-bold text-white tracking-wide max-sm:text-center">
                                                     {cat.name}
                                                 </h3>
                                             </div>
