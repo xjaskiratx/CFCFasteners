@@ -14,9 +14,9 @@ export default function AboutPage() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
                 <div className="mx-auto max-w-2xl text-center">
                     <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                        Forging Strength Since 2018
+                        Forging Strength <br className="sm:hidden" /> Since 2018
                     </h1>
-                    <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400 max-sm:text-justify max-sm:[text-align-last:center]">
                         CFC Fasteners has been at the forefront of precision engineering, delivering critical bolts and nuts to the aerospace, automotive, and heavy machinery industries worldwide.
                     </p>
                 </div>
@@ -27,7 +27,7 @@ export default function AboutPage() {
                             <History className="h-8 w-8 text-primary" />
                         </div>
                         <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">Our Heritage</h3>
-                        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                        <p className="mt-4 text-zinc-600 dark:text-zinc-400 max-sm:text-justify max-sm:[text-align-last:center]">
                             Starting from a small workshop over three decades ago, we have rapidly expanded into a multi-facility global leader built on rigorous standards.
                         </p>
                     </div>
@@ -36,7 +36,7 @@ export default function AboutPage() {
                             <Building2 className="h-8 w-8 text-primary" />
                         </div>
                         <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">Manufacturing Capabilities</h3>
-                        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                        <p className="mt-4 text-zinc-600 dark:text-zinc-400 max-sm:text-justify max-sm:[text-align-last:center]">
                             Our state-of-the-art 150,000 sq ft facility utilizes the latest hot-forging, cold-heading, and CNC precision turning technologies.
                         </p>
                     </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
                             <Award className="h-8 w-8 text-primary" />
                         </div>
                         <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">Global Compliance</h3>
-                        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                        <p className="mt-4 text-zinc-600 dark:text-zinc-400 max-sm:text-justify max-sm:[text-align-last:center]">
                             We are ISO 9001:2015 certified, manufacturing fasteners explicitly matching DIN, ISO, ANSI, and ASME stringent requirements.
                         </p>
                     </div>
