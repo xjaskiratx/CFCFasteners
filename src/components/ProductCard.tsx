@@ -19,7 +19,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
     return (
         <div className="product-card group relative flex flex-col overflow-hidden rounded-3xl bg-white/60 dark:bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-110 transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
-            <div className="aspect-h-3 aspect-w-4 bg-transparent sm:aspect-none sm:h-64 relative overflow-hidden">
+            <div className="h-48 sm:h-64 sm:aspect-none relative overflow-hidden bg-transparent w-full">
                 <Image
                     src={product.imageUrl}
                     alt={product.name}

@@ -21,11 +21,10 @@ export const metadata: Metadata = {
   description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
   icons: {
     icon: [
-      { url: '/CFC.png', type: 'image/png' },
       { url: '/BrandMark.svg', type: 'image/svg+xml' }
     ],
     apple: [
-      { url: '/CFC.png' }
+      { url: '/BrandMark.svg' }
     ]
   }
 };
