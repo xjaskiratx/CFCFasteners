@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     const navLinks = [
         { name: "Home", href: "/" },
@@ -42,38 +45,66 @@ export default function Header() {
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle mobile menu"
-                        className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                        className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white relative w-6 h-6 flex items-center justify-center"
                     >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        <AnimatePresence mode="popLayout">
+                            {isOpen ? (
+                                <motion.div
+                                    key="close"
+                                    initial={{ scale: 0, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute"
+                                >
+                                    <X size={24} />
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="menu"
+                                    initial={{ scale: 0, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute"
+                                >
+                                    <Menu size={24} />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                         <span className="sr-only">Toggle menu</span>
                     </button>
                 </div>
             </div>
 
             {/* Mobile Nav */}
-            {isOpen && (
-                <div className="md:hidden">
-                    <div className="space-y-1 px-4 pb-3 pt-2 shadow-lg bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-zinc-700 hover:bg-zinc-50 hover:text-primary dark:text-zinc-200 dark:hover:bg-zinc-800 cursor-pointer"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                        <Link
-                            href="/catalog"
-                            className="mt-4 block w-full rounded-md bg-primary px-3 py-2 text-center text-base font-medium text-white hover:bg-primary-dark"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Get a Quote
-                        </Link>
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="md:hidden overflow-hidden"
+                    >
+                        <div className="space-y-1 px-4 pb-3 pt-2 shadow-lg bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`block rounded-full px-4 py-2 text-base font-medium cursor-pointer transition-colors ${pathname === link.href
+                                        ? "text-primary bg-primary/10"
+                                        : "text-zinc-700 hover:bg-zinc-50 hover:text-primary dark:text-zinc-200 dark:hover:bg-zinc-800"
+                                        }`}
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 }
