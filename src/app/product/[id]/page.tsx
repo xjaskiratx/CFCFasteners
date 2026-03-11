@@ -31,7 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
 
                 <div className="mx-auto w-full max-w-7xl flex flex-col gap-12 lg:flex-row lg:items-stretch lg:justify-center">
-                    <div className="w-full lg:w-[390px] lg:h-[600px] bg-white/5 backdrop-blur-md shadow-xl p-6 rounded-3xl flex flex-col">
+                    <div className="w-full lg:w-[390px] lg:h-[600px] bg-white/5 backdrop-blur-md shadow-xl p-6 rounded-3xl flex flex-col justify-between">
                         <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                             {product.name}
                         </h1>
@@ -47,12 +47,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                 priority
                             />
                         </div>
-                        <div className="mt-auto pt-6">
+                        <div className="pt-6">
                             <QuoteButton productName={product.name} />
                         </div>
                     </div>
 
-                    <div className="w-full lg:w-[390px] lg:h-[600px] bg-black/40 backdrop-blur-md shadow-xl p-6 sm:p-8 rounded-3xl">
+                    <div className="w-full lg:w-[390px] lg:h-[600px] bg-black/40 backdrop-blur-md shadow-xl p-6 sm:p-8 rounded-3xl flex flex-col">
                         <h2 className="text-xl font-semibold text-white">Product Details</h2>
                         <div className="mt-6 space-y-6">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -83,6 +83,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </div>
                 </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-16 lg:h-24 bg-gradient-to-t from-zinc-100 dark:from-zinc-900 to-transparent z-10 pointer-events-none"></div>
         </section>
     );
 }
