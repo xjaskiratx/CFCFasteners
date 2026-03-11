@@ -14,7 +14,7 @@ export default function SearchBar() {
     const [isFocused, setIsFocused] = useState(false);
 
     const searchResults = query.trim()
-        ? productsData.filter((p: any) =>
+        ? productsData.filter((p: Product) =>
             p.name.toLowerCase().includes(query.toLowerCase()) ||
             p.description.toLowerCase().includes(query.toLowerCase())
         ).slice(0, 4) // Show up to 4 results in the row

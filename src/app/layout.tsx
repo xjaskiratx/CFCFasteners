@@ -19,6 +19,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CFC Fasteners | Premium Industrial Fasteners",
   description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+  openGraph: {
+    title: "CFC Fasteners | Premium Industrial Fasteners",
+    description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+    siteName: "CFC Fasteners",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CFC Fasteners | Premium Industrial Fasteners",
+    description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+  },
   icons: {
     icon: [
       { url: '/BrandMark.svg', type: 'image/svg+xml' }
