@@ -15,16 +15,23 @@ export default function Footer() {
                         <Link href="/contact" className="text-sm font-semibold text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary-light transition-colors">
                             Contact Us
                         </Link>
+                        <a href={`tel:+${process.env.NEXT_PUBLIC_BUSINESS_PHONE}`} className="text-sm font-semibold text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary-light transition-colors">
+                            Call Us
+                        </a>
                     </nav>
                 </div>
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-zinc-500">
-                        &copy; {new Date().getFullYear()} <span className="font-semibold text-zinc-700 dark:text-zinc-300">CFC Fasteners</span>. All rights reserved.
-                    </p>
-                    <p className="text-sm text-zinc-500">
-                        Developed & Managed by <span className="font-semibold text-zinc-700 dark:text-zinc-300">JSX W&D</span>
-                    </p>
-                </div>
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-sm text-zinc-500">
+                            &copy; {new Date().getFullYear()} <span className="font-semibold text-zinc-700 dark:text-zinc-300">CFC Fasteners</span>. All rights reserved.
+                        </p>
+                        <div className="flex gap-4 text-xs text-zinc-500">
+                            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+                            <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+                        </div>
+                        <p className="text-sm text-zinc-500">
+                            Developed & Managed by <span className="font-semibold text-zinc-700 dark:text-zinc-300">JSX W&D</span>
+                        </p>
+                    </div>
             </div>
         </footer>
     );

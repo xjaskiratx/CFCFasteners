@@ -13,7 +13,7 @@ const rfqSchema = z.object({
     email: z.string().email("Valid email is required"),
     phone: z.string().refine((val) => val.replace(/\D/g, '').length >= 10, "Phone number must contain at least 10 digits"),
     company: z.string().optional(),
-    productName: z.string().min(1, "Product is required"),
+    productName: z.string().optional(),
     quantity: z.string().min(1, "Quantity is required"),
     message: z.string().optional(),
 });
@@ -55,8 +55,9 @@ export default function RFQModal() {
 
     const onSubmit = async (data: RFQFormValues) => {
         setSubmitStatus("idle");
+        const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
         try {
-            const res = await fetch('https://formspree.io/f/xjgelpnn', {
+            const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,7 +87,8 @@ export default function RFQModal() {
         }
 
         const text = `*New RFQ from CFC Fasteners Website*%0A%0A*Name:* ${data.name}%0A*Company:* ${data.company || 'N/A'}%0A*Email:* ${data.email}%0A*Phone:* ${data.phone}%0A*Product:* ${data.productName}%0A*Quantity:* ${data.quantity}%0A*Message:* ${data.message || 'N/A'}`;
-        const whatsappUrl = `https://wa.me/919646506000?text=${text}`; // Changed to client's Indian number since +91 was shown
+        const whatsappNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`; 
         window.open(whatsappUrl, "_blank", "noopener,noreferrer");
         closeQuote();
     };
@@ -195,7 +197,7 @@ export default function RFQModal() {
                                         {...register("message")}
                                         rows={3}
                                         className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
-                                        placeholder="Any specific grades, finishes, or custom requirements?"
+                                        placeholder="Any specific grades or finishes?"
                                     />
                                 </div>
                             </div>

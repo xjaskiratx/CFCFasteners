@@ -6,6 +6,17 @@ import productsData from "@/data/products.json";
 import QuoteButton from "@/components/QuoteButton";
 import ClientBackgrounds from "@/components/ClientBackgrounds";
 import ProductCard, { Product } from "@/components/ProductCard";
+import ProductCarousel from "@/components/ProductCarousel";
+
+export const metadata = {
+  title: "CFC Fasteners | Premium Industrial Fasteners Manufacturer",
+  description: "Global supplier of high-grade bolts, nuts, screws, anchors, and hooks. Precision manufacturing for aerospace, automotive, and industrial excellence.",
+  openGraph: {
+    title: "CFC Fasteners | Industrial Manufacturing Excellence",
+    description: "Premium manufacturer of industrial fasteners since 2018. Explore our massive inventory of bolts, nuts, and screws.",
+    images: [{ url: '/CFC.png', width: 1200, height: 630, alt: 'CFC Fasteners Hero' }],
+  },
+};
 
 export default function Home() {
   const featuredProducts: Product[] = productsData.slice(0, 6) as Product[];
@@ -144,10 +155,8 @@ export default function Home() {
             <p className="mt-4 text-lg text-zinc-300">We deal in all types of screws.</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 product-grid">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="product-grid">
+            <ProductCarousel products={featuredProducts} />
           </div>
 
           <div className="mt-10 sm:hidden">

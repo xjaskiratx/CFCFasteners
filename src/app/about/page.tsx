@@ -37,7 +37,7 @@ export default function AboutPage() {
                         </div>
                         <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">Manufacturing Capabilities</h3>
                         <p className="mt-4 text-zinc-600 dark:text-zinc-400 max-sm:text-justify max-sm:[text-align-last:center]">
-                            Our state-of-the-art 150,000 sq ft facility utilizes the latest hot-forging, cold-heading, and CNC precision turning technologies.
+                            Our state-of-the-art 150,000 sq ft facility utilizes the latest hot-forging, cold-heading, and high-speed automated production technologies.
                         </p>
                     </div>
                     <div className="flex flex-col items-center text-center">

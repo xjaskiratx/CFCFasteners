@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ClientBackgrounds from "@/components/ClientBackgrounds";
 import QuoteButton from "@/components/QuoteButton";
 import BackButton from "@/components/BackButton";
+import ShareButton from "@/components/ShareButton";
 import productsData from "@/data/products.json";
 import type { Product } from "@/components/ProductCard";
 
@@ -10,6 +11,31 @@ interface ProductPageProps {
     params: Promise<{
         id: string;
     }>;
+}
+
+export async function generateMetadata({ params }: ProductPageProps) {
+    const { id } = await params;
+    const productId = decodeURIComponent(id);
+    const product = (productsData as Product[]).find((item) => item.id === productId);
+
+    if (!product) return { title: "Product Not Found" };
+
+    return {
+        title: `${product.name} | CFC Fasteners`,
+        description: product.description,
+        openGraph: {
+            title: product.name,
+            description: product.description,
+            images: [
+                {
+                    url: product.imageUrl,
+                    width: 800,
+                    height: 600,
+                    alt: product.name,
+                },
+            ],
+        },
+    };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -25,7 +51,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <section className="relative bg-zinc-950 text-white">
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             <ClientBackgrounds showHero />
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20">
                 <div className="mb-8">
                     <BackButton />
                 </div>
@@ -43,41 +69,67 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                 height={260}
                                 sizes="(min-width: 1024px) 360px, 100vw"
                                 className="h-full w-full object-contain"
-                                unoptimized
                                 priority
                             />
                         </div>
-                        <div className="pt-6">
+                        <div className="pt-6 flex flex-col gap-3">
                             <QuoteButton productName={product.name} />
+                            <div className="flex justify-center">
+                                <ShareButton 
+                                    title={product.name} 
+                                    text={`Check out ${product.name} from CFC Fasteners`} 
+                                    url="" 
+                                />
+                            </div>
                         </div>
                     </div>
 
-                    <div className="w-full lg:w-[390px] lg:h-[600px] bg-black/40 backdrop-blur-md shadow-xl p-6 sm:p-8 rounded-3xl flex flex-col">
-                        <h2 className="text-xl font-semibold text-white">Product Details</h2>
-                        <div className="mt-6 space-y-6">
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span className="text-base font-bold text-white">Product</span>
-                                <span className="text-base text-zinc-200">{product.name}</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span className="text-base font-bold text-white">Category</span>
-                                <span className="text-base text-zinc-200">[{product.category}]</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span className="text-base font-bold text-white">Material</span>
-                                <span className="text-base text-zinc-200">{product.material}</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span className="text-base font-bold text-white">Grade</span>
-                                <span className="text-base text-zinc-200">{product.grade}</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span className="text-base font-bold text-white">Standard</span>
-                                <span className="text-base text-zinc-200">{product.standard}</span>
-                            </div>
-                            <div className="flex flex-col gap-2">
-                                <span className="text-base font-bold text-white">Description</span>
-                                <span className="text-base text-zinc-200">{product.description}</span>
+                    <div className="w-full lg:w-[450px] bg-black/40 backdrop-blur-md shadow-xl p-6 sm:p-8 rounded-3xl flex flex-col">
+                        <h2 className="text-xl font-semibold text-white mb-6">Technical Specifications</h2>
+                        <div className="flex-1 overflow-hidden">
+                            <table className="w-full text-sm text-left">
+                                <tbody className="divide-y divide-white/10">
+                                    <tr className="group">
+                                        <th className="py-3 font-bold text-zinc-400 group-hover:text-white transition-colors">Category</th>
+                                        <td className="py-3 text-white text-right capitalize">{product.category}</td>
+                                    </tr>
+                                    <tr className="group">
+                                        <th className="py-3 font-bold text-zinc-400 group-hover:text-white transition-colors">Material</th>
+                                        <td className="py-3 text-white text-right">{product.material}</td>
+                                    </tr>
+                                    <tr className="group">
+                                        <th className="py-3 font-bold text-zinc-400 group-hover:text-white transition-colors">Grade</th>
+                                        <td className="py-3 text-white text-right">{product.grade}</td>
+                                    </tr>
+                                    <tr className="group">
+                                        <th className="py-3 font-bold text-zinc-400 group-hover:text-white transition-colors">Standard</th>
+                                        <td className="py-3 text-white text-right">{product.standard}</td>
+                                    </tr>
+                                    {product.sizeChart && (
+                                        <tr className="group">
+                                            <th className="py-3 font-bold text-zinc-400 group-hover:text-white transition-colors">Size Range</th>
+                                            <td className="py-3 text-white text-right">{product.sizeChart}</td>
+                                        </tr>
+                                    )}
+                                    {product.finish && (
+                                        <tr className="group">
+                                            <th className="py-3 font-bold text-zinc-400 group-hover:text-white transition-colors">Finish</th>
+                                            <td className="py-3 text-white text-right">{product.finish}</td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                            
+                            {product.application && (
+                                <div className="mt-8">
+                                    <h3 className="text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wider">Application</h3>
+                                    <p className="text-zinc-200 text-sm leading-relaxed">{product.application}</p>
+                                </div>
+                            )}
+                            
+                            <div className="mt-8">
+                                <h3 className="text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wider">Description</h3>
+                                <p className="text-zinc-200 text-sm leading-relaxed">{product.description}</p>
                             </div>
                         </div>
                     </div>

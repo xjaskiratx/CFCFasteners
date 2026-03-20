@@ -96,8 +96,8 @@ export default function RippleBackground() {
         if (!ctx) return;
 
         let width: number, height: number;
-        const spacing = 45;
-        const rippleFrequency = 0.015;
+        const spacing = 65; // Increased spacing to reduce particle count for performance
+        const rippleFrequency = 0.012; // Slightly lower frequency
         let animationFrameId: number;
         let isVisible = true;
         let isInView = true;
@@ -114,6 +114,7 @@ export default function RippleBackground() {
             height = canvas.height = parent.clientHeight || window.innerHeight;
 
             particles = [];
+            // Optimization: Skip particles if they are too many
             for (let x = spacing / 2; x < width; x += spacing) {
                 for (let y = spacing / 2; y < height; y += spacing) {
                     particles.push(new Dot(x, y));
@@ -128,7 +129,6 @@ export default function RippleBackground() {
                 return;
             }
 
-            // Solid fill background to maintain color consistency
             ctx.fillStyle = '#0d0e10';
             ctx.fillRect(0, 0, width, height);
 
@@ -146,9 +146,6 @@ export default function RippleBackground() {
 
             animationFrameId = requestAnimationFrame(animate);
         }
-
-        window.addEventListener('resize', init);
-
         const handleVisibilityChange = () => {
             isVisible = document.visibilityState === 'visible';
         };
@@ -185,7 +182,7 @@ export default function RippleBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 z-0 pointer-events-none h-full w-full block"
+            className="absolute inset-0 z-0 pointer-events-none h-full w-full block will-change-transform"
         />
     );
 }

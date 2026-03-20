@@ -5,6 +5,8 @@ import { Filter } from "lucide-react";
 import QuoteButton from "@/components/QuoteButton";
 import ClientBackgrounds from "@/components/ClientBackgrounds";
 import ProductCard, { Product } from "@/components/ProductCard";
+import SearchInput from "@/components/SearchInput";
+import { Suspense } from "react";
 
 export const metadata = {
     title: "Product Catalog | CFC Fasteners",
@@ -54,7 +56,7 @@ export default async function CatalogPage({
                                 Product Catalog
                             </h1>
                             <p className="mt-4 text-xl leading-8 text-zinc-100 drop-shadow-lg font-medium max-w-3xl max-sm:text-justify max-sm:[text-align-last:center]">
-                                Browse our inventory of premium industrial fasteners. Need something specific? Request a quote for custom dimensions.
+                                Browse our inventory of premium industrial fasteners. Need a large volume? Request a wholesale quotation.
                             </p>
                         </div>
                     </div>
@@ -64,27 +66,34 @@ export default async function CatalogPage({
                 <div className="absolute bottom-0 left-0 w-full h-24 lg:h-32 bg-linear-to-t from-zinc-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
             </section>
 
-            {/* Sticky Categories Section */}
-            <div className="sticky top-16 z-40 bg-zinc-50/95 dark:bg-black/95 backdrop-blur-md py-4 transition-colors">
+            {/* Sticky Categories & Search Section */}
+            <div className="sticky top-16 z-40 bg-zinc-50/95 dark:bg-black/95 backdrop-blur-md py-4 transition-colors border-b border-zinc-200/50 dark:border-zinc-800/50">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    {/* Left Aligned Categories */}
-                    <div className="flex items-center gap-2 max-sm:w-full">
-                        <Filter size={18} className="text-zinc-500 hidden sm:block" />
-                        <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mr-2 hidden sm:block">Category:</span>
-                        <div className="flex flex-wrap gap-4 max-sm:grid max-sm:grid-cols-3 max-sm:gap-2 max-sm:w-full">
-                            {categories.map((cat) => (
-                                <Link
-                                    key={cat.id}
-                                    href={`/catalog?category=${cat.id}`}
-                                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 transform shadow-sm border cursor-pointer max-sm:w-full max-sm:text-center max-sm:px-2 max-sm:text-[11px] ${cat.id === "all" ? "max-sm:col-span-3 max-sm:text-sm max-sm:py-2" : ""
-                                        } ${activeCategory === cat.id
-                                            ? "bg-primary text-white border-transparent shadow-md shadow-primary/20 sm:scale-105"
-                                            : "bg-zinc-800/80 text-zinc-100 border-white/5 hover:bg-primary hover:border-transparent hover:shadow-md hover:shadow-primary/20 sm:hover:scale-105"
-                                        }`}
-                                >
-                                    {cat.name}
-                                </Link>
-                            ))}
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        {/* Left Aligned Categories */}
+                        <div className="flex-1 flex items-center gap-2 overflow-hidden">
+                            <Filter size={18} className="text-zinc-500 hidden lg:block shrink-0" />
+                            <div className="flex flex-wrap gap-2 sm:gap-3 max-sm:pb-2 no-scrollbar">
+                                {categories.map((cat) => (
+                                    <Link
+                                        key={cat.id}
+                                        href={`/catalog?category=${cat.id}${searchQuery ? `&q=${searchQuery}` : ""}`}
+                                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 transform shadow-sm border cursor-pointer whitespace-nowrap uppercase tracking-tight ${activeCategory === cat.id
+                                                ? "bg-primary text-white border-transparent shadow-md shadow-primary/20 scale-105"
+                                                : "bg-white dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-100 border-zinc-200 dark:border-white/5 hover:bg-primary/10 hover:text-primary hover:border-primary/50"
+                                            }`}
+                                    >
+                                        {cat.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Search Input - Aligned to match the right edge of the grid */}
+                        <div className="w-full md:w-80 shrink-0">
+                            <Suspense fallback={<div className="h-10 w-full bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-full" />}>
+                                <SearchInput />
+                            </Suspense>
                         </div>
                     </div>
                 </div>

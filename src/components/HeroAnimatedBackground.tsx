@@ -68,7 +68,7 @@ export default function HeroAnimatedBackground() {
     return (
         <div
             ref={rootRef}
-            className="absolute inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen opacity-25"
+            className="absolute inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen opacity-25 will-change-transform"
         >
             <motion.div style={{ y: y1, rotate: rotate1 }} className="absolute top-[10%] left-[5%] text-primary blur-[3px] scale-150">
                 <Nut className="w-32 h-32" />

@@ -22,7 +22,7 @@ export default function Header() {
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center">
                     <Link href="/" className="flex items-center gap-2 text-2xl font-bold tracking-tighter text-primary">
-                        <Image src="/BrandMark.svg" alt="CFC Fasteners Logo" width={32} height={32} />
+                        <Image src="/BrandMark.svg" alt="CFC Fasteners Logo" width={36} height={32} className="h-8 w-auto" />
                         <span>CFC<span className="text-zinc-900 dark:text-white">Fasteners</span></span>
                     </Link>
                 </div>

@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { QuoteProvider } from "@/components/QuoteContext";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +18,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CFC Fasteners | Premium Industrial Fasteners",
+  metadataBase: new URL('https://cfcfasteners.com'), // Placeholder, update if needed
+  title: {
+    default: "CFC Fasteners | Premium Industrial Fasteners",
+    template: "%s | CFC Fasteners",
+  },
   description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
   openGraph: {
     title: "CFC Fasteners | Premium Industrial Fasteners",
     description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+    url: 'https://cfcfasteners.com',
     siteName: "CFC Fasteners",
     locale: "en_US",
     type: "website",
@@ -48,7 +54,7 @@ export default async function RootLayout({
 }>) {
   const nonce = (await headers()).get("x-nonce") || undefined;
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark">
       <body
         nonce={nonce}
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
@@ -59,6 +65,7 @@ export default async function RootLayout({
             {children}
           </main>
           <Footer />
+          <WhatsAppWidget />
         </QuoteProvider>
       </body>
     </html>
