@@ -4,7 +4,20 @@ import HeroAnimatedBackground from "@/components/HeroAnimatedBackground";
 
 export const metadata = {
     title: "About Us | CFC Fasteners",
-    description: "Learn about the history and manufacturing excellence of CFC Fasteners.",
+    description: "Learn about the history and manufacturing excellence of CFC Fasteners. We are a premier manufacturer of high-quality industrial fasteners since 2018.",
+    keywords: ["about CFC Fasteners", "fastener manufacturing history", "industrial quality fasteners", "ISO certified fastener manufacturer"],
+    alternates: {
+        canonical: '/about',
+    },
+    openGraph: {
+        title: "About Us | CFC Fasteners",
+        description: "Learn about the history and manufacturing excellence of CFC Fasteners.",
+        url: 'https://cfc-fasteners.vercel.app/about',
+    },
+    twitter: {
+        title: "About Us | CFC Fasteners",
+        description: "Learn about the history and manufacturing excellence of CFC Fasteners.",
+    }
 };
 
 export default function AboutPage() {

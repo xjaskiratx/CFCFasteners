@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import productsData from '@/data/products.json'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://cfcfasteners.com'
+  const baseUrl = 'https://cfc-fasteners.vercel.app'
   
   // Static routes
   const routes = ['', '/about', '/contact', '/catalog'].map((route) => ({

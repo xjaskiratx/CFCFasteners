@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://cfcfasteners.com/sitemap.xml',
+    sitemap: 'https://cfc-fasteners.vercel.app/sitemap.xml',
   }
 }

@@ -18,17 +18,48 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cfcfasteners.com'), // Placeholder, update if needed
+  metadataBase: new URL('https://cfc-fasteners.vercel.app'),
   title: {
     default: "CFC Fasteners | Premium Industrial Fasteners",
     template: "%s | CFC Fasteners",
   },
-  description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+  description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications. Global delivery and precision engineering.",
+  keywords: ["industrial fasteners", "bolts", "nuts", "screws", "anchors", "hooks", "fastener manufacturer", "drywall screws", "chipboard screws", "self drilling screws", "CFC Fasteners", "Ludhiana fasteners"],
+  authors: [{ name: "CFC Fasteners" }],
+  creator: "CFC Fasteners",
+  publisher: "CFC Fasteners",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "CFC Fasteners | Premium Industrial Fasteners",
-    description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
-    url: 'https://cfcfasteners.com',
+    description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications. Premium manufacturing for global excellence.",
+    url: 'https://cfc-fasteners.vercel.app',
     siteName: "CFC Fasteners",
+    images: [
+      {
+        url: '/CFC.png',
+        width: 1600,
+        height: 900,
+        alt: 'CFC Fasteners Brand Logo',
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -36,6 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CFC Fasteners | Premium Industrial Fasteners",
     description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
+    images: ['/CFC.png'],
   },
   icons: {
     icon: [

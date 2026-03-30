@@ -10,7 +10,20 @@ import { Suspense } from "react";
 
 export const metadata = {
     title: "Product Catalog | CFC Fasteners",
-    description: "Browse our extensive catalog of premium industrial bolts, nuts, screws, anchors, and hooks.",
+    description: "Browse our extensive catalog of premium industrial bolts, nuts, screws, anchors, and hooks. Direct batch manufacturing and massive inventory.",
+    keywords: ["fastener catalog", "buy bolts online", "buy nuts online", "industrial screws catalog", "anchors and hooks"],
+    alternates: {
+        canonical: '/catalog',
+    },
+    openGraph: {
+        title: "Product Catalog | CFC Fasteners",
+        description: "Browse our extensive catalog of premium industrial bolts, nuts, screws, anchors, and hooks.",
+        url: 'https://cfc-fasteners.vercel.app/catalog',
+    },
+    twitter: {
+        title: "Product Catalog | CFC Fasteners",
+        description: "Browse our extensive catalog of premium industrial bolts, nuts, screws, anchors, and hooks.",
+    }
 };
 
 export default async function CatalogPage({

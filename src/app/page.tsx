@@ -11,6 +11,10 @@ import ProductCarousel from "@/components/ProductCarousel";
 export const metadata = {
   title: "CFC Fasteners | Premium Industrial Fasteners Manufacturer",
   description: "Global supplier of high-grade bolts, nuts, screws, anchors, and hooks. Precision manufacturing for aerospace, automotive, and industrial excellence.",
+  keywords: ["industrial fasteners manufacturer", "premium bolts and nuts", "high-grade screws", "Ludhiana fasteners supplier"],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "CFC Fasteners | Industrial Manufacturing Excellence",
     description: "Premium manufacturer of industrial fasteners since 2018. Explore our massive inventory of bolts, nuts, and screws.",
