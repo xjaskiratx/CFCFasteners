@@ -12,6 +12,7 @@ export function middleware(request: NextRequest) {
     "img-src 'self' data: https:",
     "font-src 'self' data:",
     "connect-src 'self' https://ipapi.co https://formspree.io https://wa.me ws: wss:",
+    "frame-src 'self' https://www.google.com",
     "base-uri 'self'",
     "object-src 'none'",
     "frame-ancestors 'none'",
