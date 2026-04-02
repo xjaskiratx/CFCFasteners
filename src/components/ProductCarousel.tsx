@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import ProductCard, { Product } from "./ProductCard";
 
 interface ProductCarouselProps {
@@ -9,11 +9,18 @@ interface ProductCarouselProps {
 }
 
 export default function ProductCarousel({ products }: ProductCarouselProps) {
-    const [durationFactor, setDurationFactor] = useState(1); // Default
+    const [durationFactor, setDurationFactor] = useState(7);
+    const controls = useAnimation();
+    const x = useMotionValue(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+
+    // Duplicate products for infinite scroll effect (using 3 sets for smoother drag buffer)
+    const displayProducts = [...products, ...products, ...products];
+    const productWidth = 320 + 32; // card width + gap (approximate, refined below)
 
     useEffect(() => {
         const handleResize = () => {
-            // Speed 5 for desktop, Speed 12 for mobile
             if (window.innerWidth < 1024) {
                 setDurationFactor(12);
             } else {
@@ -26,32 +33,53 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // Duplicate products for infinite scroll effect (using 2 sets for standard loop)
-    const doubledProducts = [...products, ...products];
+    const startAutoScroll = () => {
+        const totalWidth = products.length * productWidth;
+        controls.start({
+            x: -totalWidth,
+            transition: {
+                duration: products.length * durationFactor,
+                ease: "linear",
+                repeat: Infinity,
+            },
+        });
+    };
+
+    useEffect(() => {
+        if (!isDragging) {
+            startAutoScroll();
+        } else {
+            controls.stop();
+        }
+    }, [isDragging, products.length, durationFactor]);
+
+    // Handle Wrapping for Infinite Loop
+    useEffect(() => {
+        const unsubscribe = x.on("change", (latest) => {
+            const totalWidth = products.length * productWidth;
+            if (latest <= -totalWidth * 2) {
+                x.set(latest + totalWidth);
+            } else if (latest >= 0) {
+                x.set(latest - totalWidth);
+            }
+        });
+        return () => unsubscribe();
+    }, [products.length]);
 
     return (
-        <div className="relative w-full overflow-hidden py-10">
+        <div className="relative w-full overflow-hidden py-6 cursor-grab active:cursor-grabbing" ref={containerRef}>
             <motion.div
-                key={`carousel-${durationFactor}`}
+                style={{ x, width: "max-content" }}
                 className="flex gap-6 sm:gap-8"
-                initial={{ x: 0 }}
-                animate={{
-                    x: "-50%",
+                drag="x"
+                onDragStart={() => setIsDragging(true)}
+                onDragEnd={() => {
+                    setIsDragging(false);
                 }}
-                transition={{
-                    x: {
-                        duration: products.length * durationFactor,
-                        repeat: Infinity,
-                        ease: "linear",
-                        repeatType: "loop"
-                    }
-                }}
-                style={{ width: "max-content" }}
-                // Pause on hover
-                whileHover={{ animationPlayState: "paused" }}
+                animate={controls}
             >
-                {doubledProducts.map((product, index) => (
-                    <div key={`${product.id}-${index}`} className="w-[280px] sm:w-[320px] shrink-0">
+                {displayProducts.map((product, index) => (
+                    <div key={`${product.id}-${index}`} className="w-[280px] sm:w-[320px] shrink-0 pointer-events-none sm:pointer-events-auto">
                         <ProductCard product={product} showQuoteButton={false} />
                     </div>
                 ))}

@@ -20,18 +20,18 @@ export default function Footer() {
                         </a>
                     </nav>
                 </div>
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-sm text-zinc-500">
-                            &copy; {new Date().getFullYear()} <span className="font-semibold text-zinc-700 dark:text-zinc-300">CFC Fasteners</span>. All rights reserved.
-                        </p>
-                        <div className="flex gap-4 text-xs text-zinc-500">
-                            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-                            <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
-                        </div>
-                        <p className="text-sm text-zinc-500">
-                            Developed & Managed by <span className="font-semibold text-zinc-700 dark:text-zinc-300">JSX W&D</span>
-                        </p>
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-sm text-zinc-500">
+                        &copy; {new Date().getFullYear()} <span className="font-semibold text-zinc-700 dark:text-zinc-300">CFC Fasteners</span>. All rights reserved.
+                    </p>
+                    <div className="flex gap-4 text-xs text-zinc-500">
+                        <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
                     </div>
+                    <p className="text-sm text-zinc-500">
+                        Developed & Managed by <a href="https://jsx-studios.vercel.app" target="_blank" rel="noopener noreferrer" className="font-semibold text-zinc-700 dark:text-zinc-300 hover:text-primary transition-colors">JSX Studios</a>
+                    </p>
+                </div>
             </div>
         </footer>
     );

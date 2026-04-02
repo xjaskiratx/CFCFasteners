@@ -176,7 +176,7 @@ export default function Home() {
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden lg:block w-px self-stretch bg-linear-to-b from-transparent via-zinc-800 to-transparent mx-2"></div>
+            <div className="hidden lg:block w-px self-stretch bg-primary/40 mx-2"></div>
 
             {/* Carousel */}
             <div className="flex-1 min-w-0 flex flex-col justify-center">
