@@ -37,7 +37,7 @@ export default function ProductCard({ product, showQuoteButton = true }: Product
                 </div>
                 {/* Text Content with Flex Grow to Push Buttons Down */}
                 <div className="flex flex-1 flex-col p-6 text-left">
-                    <h3 className="text-lg font-bold text-white min-h-[3.5rem] line-clamp-2">
+                    <h3 className="text-lg font-bold text-white min-h-[2.5rem] line-clamp-2">
                         {product.name}
                     </h3>
                     <div className="mt-2 flex items-center gap-2 text-sm text-zinc-400">
@@ -46,7 +46,7 @@ export default function ProductCard({ product, showQuoteButton = true }: Product
                         </span>
                         <span className="text-zinc-500 font-medium text-xs truncate whitespace-nowrap">{product.material}</span>
                     </div>
-                    <p className="mt-4 text-sm text-zinc-400 line-clamp-3 min-h-[4.5rem]">
+                    <p className="mt-4 text-sm text-zinc-400 line-clamp-3 min-h-[3rem]">
                         {product.description}
                     </p>
                     {showQuoteButton && (

@@ -23,7 +23,9 @@ export const metadata = {
 };
 
 export default function Home() {
-  const featuredProducts: Product[] = productsData.slice(0, 6) as Product[];
+  const rawalBolt = productsData.find(p => p.id === "rawal-bolt") as Product;
+  const carouselProducts = productsData.filter(p => p.id !== "rawal-bolt") as Product[];
+
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Hero Section */}
@@ -155,12 +157,32 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-20 lg:h-32 bg-linear-to-b from-white dark:from-black via-white/50 dark:via-black/50 to-transparent z-10 pointer-events-none"></div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-16 sm:pt-12 sm:pb-24 relative z-10">
           <div className="mb-12 text-center sm:text-left">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Featured Products</h2>
-            <p className="mt-4 text-lg text-zinc-300">We deal in all types of screws.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white inline-flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+              Featured Products
+              <span className="hidden sm:inline w-8 h-px bg-zinc-700"></span>
+              <span className="text-lg sm:text-xl text-zinc-400 font-normal uppercase tracking-widest leading-relaxed">
+                We deal in all types of screws
+              </span>
+            </h2>
           </div>
 
-          <div className="product-grid">
-            <ProductCarousel products={featuredProducts} />
+          <div className="flex flex-col lg:flex-row items-stretch gap-8">
+            {/* Hero Product - Rawal Bolt */}
+            <div className="w-full lg:w-[320px] shrink-0">
+              <div className="flex flex-col">
+                <div className="mb-1 text-primary-light font-bold uppercase tracking-[0.2em] text-xs text-center lg:text-left">Hero Product</div>
+                <ProductCard product={rawalBolt} showQuoteButton={true} />
+              </div>
+            </div>
+
+            {/* Vertical Divider */}
+            <div className="hidden lg:block w-px self-stretch bg-linear-to-b from-transparent via-zinc-800 to-transparent mx-2"></div>
+
+            {/* Carousel */}
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
+              <div className="mb-4 text-zinc-500 font-bold uppercase tracking-[0.2em] text-xs text-center lg:text-left">Full Range Catalog</div>
+              <ProductCarousel products={carouselProducts} />
+            </div>
           </div>
 
           <div className="mt-10 sm:hidden">
