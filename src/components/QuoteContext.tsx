@@ -1,6 +1,8 @@
 "use client";
 import React, { createContext, useContext, useState } from "react";
-import RFQModal from "./RFQModal";
+import dynamic from "next/dynamic";
+const RFQModal = dynamic(() => import("./RFQModal"), { ssr: false });
+const WhatsAppWidget = dynamic(() => import("./WhatsAppWidget"), { ssr: false });
 
 type QuoteContextType = {
     openQuote: (productName?: string) => void;
@@ -26,6 +28,7 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
         <QuoteContext.Provider value={{ openQuote, closeQuote, isOpen, prefillProduct }}>
             {children}
             <RFQModal />
+            <WhatsAppWidget />
         </QuoteContext.Provider>
     );
 }

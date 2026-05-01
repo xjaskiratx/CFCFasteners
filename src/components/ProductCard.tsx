@@ -19,9 +19,10 @@ export interface Product {
 interface ProductCardProps {
     product: Product;
     showQuoteButton?: boolean;
+    priority?: boolean;
 }
 
-export default function ProductCard({ product, showQuoteButton = true }: ProductCardProps) {
+export default function ProductCard({ product, showQuoteButton = true, priority = false }: ProductCardProps) {
     return (
         <Link href={`/product/${product.id}`} className="block h-full">
             <div className="product-card group relative flex flex-col h-full overflow-hidden rounded-3xl bg-white/60 dark:bg-black/40 backdrop-blur-md shadow-sm border border-primary/20 hover:border-primary/50 hover:scale-[1.02] transition-all duration-300 z-0 hover:z-10 hover:shadow-2xl">
@@ -31,6 +32,7 @@ export default function ProductCard({ product, showQuoteButton = true }: Product
                         src={product.imageUrl}
                         alt={product.name}
                         fill
+                        priority={priority}
                         sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-contain p-2 group-hover:scale-110 transition-transform duration-300"
                     />

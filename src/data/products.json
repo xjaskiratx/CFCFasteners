@@ -7,7 +7,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Premium drywall screws available in Black Phosphate and Chrome Polish finishes.",
-        "imageUrl": "/BlackDrywallScrew.webp",
+         "imageUrl": "/images/BlackDrywallScrew.webp",
         "sizeChart": "6x13 to 6x100",
         "finish": "Black Phosphate / Chrome Polish",
         "application": "Fastening drywall to wood or metal studs."
@@ -20,7 +20,7 @@
         "grade": "-",
         "standard": "-",
         "description": "High-quality chipboard screws for woodworking.",
-        "imageUrl": "/ChipboardScrew.webp",
+         "imageUrl": "/images/ChipboardScrew.webp",
         "sizeChart": "3mm to 6mm Dia (Length: 12mm to 100mm)",
         "finish": "Yellow/White Zinc Plated",
         "application": "Particle board, MDF, and soft woods."
@@ -33,7 +33,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Countersunk self-drilling screws.",
-        "imageUrl": "/CskSdsScrew.webp",
+         "imageUrl": "/images/CskSdsScrew.webp",
         "sizeChart": "7x19 to 8x100",
         "finish": "Zinc / Ruspert",
         "application": "Fixing wood or thin metal to steel without pre-drilling."
@@ -46,7 +46,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Wide-head truss screws for improved load distribution.",
-        "imageUrl": "/TrussHeadScrew.webp",
+         "imageUrl": "/images/TrussHeadScrew.webp",
         "sizeChart": "#8, #10, #12 (Length: 13mm to 50mm)",
         "finish": "Zinc / Nickel",
         "application": "Sheet metal work where a low-profile wide head is needed."
@@ -59,7 +59,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Self-drilling screws for quick metal fastening.",
-        "imageUrl": "/SelfDrillingScrew.webp",
+         "imageUrl": "/images/SelfDrillingScrew.webp",
         "sizeChart": "10x19 to 12x100",
         "finish": "Zinc / Galvanized",
         "application": "Metal-to-metal fastening; roofing and cladding."
@@ -72,7 +72,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Heavy-duty expansion anchors.",
-        "imageUrl": "/RawalBolt_v1.webp",
+         "imageUrl": "/images/RawalBolt_v1.webp",
         "sizeChart": "M6 to M16",
         "finish": "Yellow Zinc",
         "application": "Heavy-duty masonry anchoring; racking and machinery."
@@ -85,7 +85,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Anchor pin bolts for secure fastening.",
-        "imageUrl": "/AnchorPinBolt.webp",
+         "imageUrl": "/images/AnchorPinBolt.webp",
         "sizeChart": "8x75 to 20x300",
         "finish": "Zinc Plated",
         "application": "Light to medium duty concrete fastening (Hammer-set)."
@@ -98,7 +98,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Internally threaded drop-in expansion anchors.",
-        "imageUrl": "/DropInAnchor.webp",
+         "imageUrl": "/images/DropInAnchor.webp",
         "sizeChart": "M6 to M16",
         "finish": "Zinc Plated",
         "application": "Internal threading for overhead bolts/threaded rods in concrete."
@@ -111,7 +111,7 @@
         "grade": "8.8",
         "standard": "-",
         "description": "Heavy-duty wedge anchors for concrete.",
-        "imageUrl": "/WedgeAnchor.webp",
+         "imageUrl": "/images/WedgeAnchor.webp",
         "sizeChart": "8mm to 24mm",
         "finish": "Zinc / Hot Dip Galv",
         "application": "Heavy structural loads in solid concrete."
@@ -124,7 +124,7 @@
         "grade": "4.8 / 8.8 / 10.9",
         "standard": "-",
         "description": "Standard hex head bolts and nuts set.",
-        "imageUrl": "/HexNutAndBolt.webp",
+         "imageUrl": "/images/HexNutAndBolt.webp",
         "finish": "Zinc / Black Oxide",
         "application": "General construction, automotive, and machinery."
     },
@@ -136,7 +136,7 @@
         "grade": "-",
         "standard": "-",
         "description": "D-shaped hooks for secure hanging.",
-        "imageUrl": "/DHooks.webp",
+         "imageUrl": "/images/DHooks.webp",
         "sizeChart": "Small, Medium, Large",
         "finish": "Zinc / Nickel / Brass",
         "application": "Hanging pictures, mirrors, or light-duty cables."
@@ -149,7 +149,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Digging tools available in Square and Round nose versions.",
-        "imageUrl": "/Shovel.webp",
+         "imageUrl": "/images/Shovel.webp",
         "finish": "Powder Coated",
         "application": "Construction, gardening, and excavation."
     },
@@ -161,7 +161,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Fully threaded steel rods.",
-        "imageUrl": "/ThreadedBars.webp",
+         "imageUrl": "/images/ThreadedBars.webp",
         "sizeChart": "M6 to M24 ( 1 meter to 3 meter )",
         "finish": "Zinc / Plain",
         "application": "Suspending HVAC, piping, or structural bracing."
@@ -174,7 +174,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Serrated flange nuts for locking without a washer.",
-        "imageUrl": "/FlangeNuts.webp",
+         "imageUrl": "/images/FlangeNuts.webp",
         "finish": "Zinc / Chrome Plated",
         "application": "Automotive and structural applications."
     },
@@ -186,7 +186,7 @@
         "grade": "-",
         "standard": "-",
         "description": "Nylon insert nuts to prevent vibration loosening.",
-        "imageUrl": "/NylockNuts.webp",
+         "imageUrl": "/images/NylockNuts.webp",
         "finish": "Zinc Plated",
         "application": "Machinery and high-vibration equipment."
     }

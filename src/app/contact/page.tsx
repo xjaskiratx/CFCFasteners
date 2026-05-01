@@ -47,7 +47,6 @@ export default function ContactPage() {
                 }
             } catch (err) {
                 // Ignore network errors (adblockers/CORS) silently so it doesn't break the page
-                console.warn("IP fetch skipped or blocked.");
             }
         };
         fetchIp();
@@ -85,7 +84,6 @@ export default function ContactPage() {
             }
         } catch (err) {
             // Client fetch caught (ad-blocker or dropped connection)
-            console.warn("Failed to ping Formspree endpoint:", err);
             setSubmitStatus("error");
         }
 
@@ -146,8 +144,8 @@ export default function ContactPage() {
                                 <div>
                                     <strong className="block text-zinc-900 dark:text-white mb-2 font-semibold text-sm">Phone Inquiries</strong>
                                     <div className="flex flex-col gap-1">
-                                        <a href="tel:+919646506000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 96465-06000</a>
                                         <a href="tel:+919464506000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 94645-06000</a>
+                                        <a href="tel:+919646506000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 96465-06000</a>
                                         <a href="tel:+919464306000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 94643-06000</a>
                                         <span className="text-zinc-500 text-[10px] mt-1">Mon-Sat, 10am - 10pm IST</span>
                                     </div>
@@ -222,46 +220,46 @@ export default function ContactPage() {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Name *</label>
-                                <input {...register("name")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="John Doe" />
+                                <label htmlFor="contact-name" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Name *</label>
+                                <input id="contact-name" {...register("name")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="John Doe" />
                                 {errors.name && <p className="mt-1 text-xs text-red-500 ml-4">{errors.name.message}</p>}
                             </div>
 
                             {method === "email" ? (
                                 <div>
-                                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Email Address *</label>
-                                    <input type="email" {...register("email")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="john@example.com" />
+                                    <label htmlFor="contact-email" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Email Address *</label>
+                                    <input id="contact-email" type="email" {...register("email")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="john@example.com" />
                                     {errors.email && <p className="mt-1 text-xs text-red-500 ml-4">{errors.email.message}</p>}
                                 </div>
                             ) : (
                                 <div>
-                                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">WhatsApp Number *</label>
-                                    <input type="tel" {...register("phone")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="+91 98765 43210" />
+                                    <label htmlFor="contact-phone" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">WhatsApp Number *</label>
+                                    <input id="contact-phone" type="tel" {...register("phone")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="+91 98765 43210" />
                                     {errors.phone && <p className="mt-1 text-xs text-red-500 ml-4">{errors.phone.message}</p>}
                                 </div>
                             )}
 
                             <div>
-                                <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Company Name (Optional)</label>
-                                <input type="text" {...register("company")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Your Company Ltd." />
+                                <label htmlFor="contact-company" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Company Name (Optional)</label>
+                                <input id="contact-company" type="text" {...register("company")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Your Company Ltd." />
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
-                                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Product Requirement *</label>
-                                    <input type="text" {...register("productName")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="e.g. Hex Bolts M12" />
+                                    <label htmlFor="contact-product" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Product Requirement *</label>
+                                    <input id="contact-product" type="text" {...register("productName")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="e.g. Hex Bolts M12" />
                                     {errors.productName && <p className="mt-1 text-xs text-red-500 ml-4">{errors.productName.message}</p>}
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Quantity *</label>
-                                    <input type="text" {...register("quantity")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="e.g. 10,000 pcs" />
+                                    <label htmlFor="contact-quantity" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Quantity *</label>
+                                    <input id="contact-quantity" type="text" {...register("quantity")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="e.g. 10,000 pcs" />
                                     {errors.quantity && <p className="mt-1 text-xs text-red-500 ml-4">{errors.quantity.message}</p>}
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Message *</label>
-                                <textarea {...register("message")} rows={3} className="w-full px-5 py-3 border border-zinc-300 dark:border-zinc-700 rounded-3xl bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 resize-y text-sm" placeholder="Additional details or technical specifications..." />
+                                <label htmlFor="contact-message" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Message *</label>
+                                <textarea id="contact-message" {...register("message")} rows={3} className="w-full px-5 py-3 border border-zinc-300 dark:border-zinc-700 rounded-3xl bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 resize-y text-sm" placeholder="Additional details or technical specifications..." />
                                 {errors.message && <p className="mt-1 text-xs text-red-500 ml-4">{errors.message.message}</p>}
                             </div>
                             <div className="pt-1">

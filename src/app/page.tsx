@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Box, ShieldCheck, Factory } from "lucide-react";
-import SearchBar from "@/components/SearchBar";
+import dynamic from "next/dynamic";
 import productsData from "@/data/products.json";
 import QuoteButton from "@/components/QuoteButton";
 import ClientBackgrounds from "@/components/ClientBackgrounds";
 import ProductCard, { Product } from "@/components/ProductCard";
-import ProductCarousel from "@/components/ProductCarousel";
+
+const SearchBar = dynamic(() => import("@/components/SearchBar"), { ssr: true });
+const ProductCarousel = dynamic(() => import("@/components/ProductCarousel"));
 
 export const metadata = {
   title: "CFC Fasteners | Premium Industrial Fasteners Manufacturer",
@@ -18,7 +20,7 @@ export const metadata = {
   openGraph: {
     title: "CFC Fasteners | Industrial Manufacturing Excellence",
     description: "Premium manufacturer of industrial fasteners since 2018. Explore our massive inventory of bolts, nuts, and screws.",
-    images: [{ url: '/CFC.png', width: 1200, height: 630, alt: 'CFC Fasteners Hero' }],
+    images: [{ url: '/images/og-image.jpg', width: 1100, height: 600, alt: 'CFC Fasteners Hero' }],
   },
 };
 
@@ -72,7 +74,7 @@ export default function Home() {
           <div className="w-full lg:w-[48%] flex justify-end items-center mt-12 lg:mt-0">
             <div className="relative w-full max-w-lg flex items-center justify-center">
               <Image
-                src="/CFC.png"
+                src="/images/BrandLogo.png"
                 alt="CFC Fasteners Brand Logo"
                 width={1600}
                 height={900}
@@ -161,7 +163,7 @@ export default function Home() {
               Featured Products
               <span className="hidden sm:inline w-8 h-px bg-zinc-700"></span>
               <span className="text-lg sm:text-xl text-zinc-400 font-normal uppercase tracking-widest leading-relaxed">
-                We deal in all types of screws
+                We deal in all types of Anchor Fasteners & Screws
               </span>
             </h2>
           </div>
@@ -171,7 +173,7 @@ export default function Home() {
             <div className="w-full lg:w-[320px] shrink-0">
               <div className="flex flex-col">
                 <div className="mb-1 text-primary-light font-bold uppercase tracking-[0.2em] text-xs text-center lg:text-left">Hero Product</div>
-                <ProductCard product={rawalBolt} showQuoteButton={true} />
+                <ProductCard product={rawalBolt} showQuoteButton={true} priority={true} />
               </div>
             </div>
 

@@ -75,6 +75,8 @@ export default function SearchBar() {
                     </div>
                     <input
                         suppressHydrationWarning
+                        id="search-input-hero"
+                        name="hero-search"
                         type="search"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}

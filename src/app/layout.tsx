@@ -5,8 +5,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { QuoteProvider } from "@/components/QuoteContext";
-import WhatsAppWidget from "@/components/WhatsAppWidget";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -54,10 +52,10 @@ export const metadata: Metadata = {
     siteName: "CFC Fasteners",
     images: [
       {
-        url: '/CFC.png',
-        width: 1600,
-        height: 900,
-        alt: 'CFC Fasteners Brand Logo',
+        url: '/images/og-image.jpg',
+        width: 1100,
+        height: 600,
+        alt: 'CFC Fasteners - Strength in Every Connection',
       },
     ],
     locale: "en_US",
@@ -67,14 +65,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CFC Fasteners | Premium Industrial Fasteners",
     description: "Manufacturer and supplier of high-quality bolts, nuts, screws, anchors, and hooks for industrial applications.",
-    images: ['/CFC.png'],
+    images: ['/images/og-image.jpg'],
   },
   icons: {
     icon: [
-      { url: '/BrandMark.svg', type: 'image/svg+xml' }
+      { url: '/images/BrandMark.svg', type: 'image/svg+xml' }
     ],
     apple: [
-      { url: '/BrandMark.svg' }
+      { url: '/images/BrandMark.svg' }
     ]
   }
 };
@@ -97,7 +95,6 @@ export default async function RootLayout({
             {children}
           </main>
           <Footer />
-          <WhatsAppWidget />
         </QuoteProvider>
       </body>
     </html>

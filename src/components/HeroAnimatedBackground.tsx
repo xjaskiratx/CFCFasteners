@@ -70,36 +70,36 @@ export default function HeroAnimatedBackground() {
             ref={rootRef}
             className="absolute inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen opacity-25 will-change-transform"
         >
-            <motion.div style={{ y: y1, rotate: rotate1 }} className="absolute top-[10%] left-[5%] text-primary blur-[3px] scale-150">
+            <motion.div style={{ y: y1, rotate: rotate1 }} className="absolute top-[10%] left-[5%] text-primary blur-[3px] scale-150 will-change-transform">
                 <Nut className="w-32 h-32" />
             </motion.div>
-            <motion.div style={{ y: y2, rotate: rotate2 }} className="absolute top-[25%] right-[8%] text-primary-light blur-[1px]">
+            <motion.div style={{ y: y2, rotate: rotate2 }} className="absolute top-[25%] right-[8%] text-primary-light blur-[1px] will-change-transform">
                 <Bolt className="w-32 h-32" />
             </motion.div>
-            <motion.div style={{ y: y3, rotate: rotate3 }} className="absolute top-[60%] left-[10%] text-white blur-[5px] scale-[2]">
+            <motion.div style={{ y: y3, rotate: rotate3 }} className="absolute top-[60%] left-[10%] text-white blur-[5px] scale-[2] will-change-transform">
                 <Hexagon className="w-24 h-24" />
             </motion.div>
-            <motion.div style={{ y: y4, rotate: rotate4 }} className="absolute top-[75%] right-[15%] text-primary blur-[2px] scale-125">
+            <motion.div style={{ y: y4, rotate: rotate4 }} className="absolute top-[75%] right-[15%] text-primary blur-[2px] scale-125 will-change-transform">
                 <Nut className="w-24 h-24" />
             </motion.div>
-            <motion.div style={{ y: y1, rotate: rotate2 }} className="absolute top-[5%] right-[40%] text-primary-light">
+            <motion.div style={{ y: y1, rotate: rotate2 }} className="absolute top-[5%] right-[40%] text-primary-light will-change-transform">
                 <Bolt className="w-12 h-12" />
             </motion.div>
-            <motion.div style={{ y: y2, rotate: rotate4 }} className="absolute top-[50%] right-[35%] text-primary blur-sm scale-[2.5] opacity-60">
+            <motion.div style={{ y: y2, rotate: rotate4 }} className="absolute top-[50%] right-[35%] text-primary blur-sm scale-[2.5] opacity-60 will-change-transform">
                 <Bolt className="w-40 h-40" />
             </motion.div>
 
             {/* Additional Bolts and Hardware */}
-            <motion.div style={{ y: y3, rotate: rotate1 }} className="absolute top-[20%] left-[45%] text-white blur-xs scale-[1.5] opacity-50">
+            <motion.div style={{ y: y3, rotate: rotate1 }} className="absolute top-[20%] left-[45%] text-white blur-xs scale-[1.5] opacity-50 will-change-transform">
                 <Bolt className="w-20 h-20" />
             </motion.div>
-            <motion.div style={{ y: y4, rotate: rotate3 }} className="absolute top-[85%] left-[25%] text-primary-light blur-[2px] scale-100 opacity-70">
+            <motion.div style={{ y: y4, rotate: rotate3 }} className="absolute top-[85%] left-[25%] text-primary-light blur-[2px] scale-100 opacity-70 will-change-transform">
                 <Bolt className="w-24 h-24" />
             </motion.div>
-            <motion.div style={{ y: y2, rotate: rotate1 }} className="absolute top-[35%] left-[80%] text-primary blur-[6px] scale-[1.8] opacity-60">
+            <motion.div style={{ y: y2, rotate: rotate1 }} className="absolute top-[35%] left-[80%] text-primary blur-[6px] scale-[1.8] opacity-60 will-change-transform">
                 <Bolt className="w-28 h-28" />
             </motion.div>
-            <motion.div style={{ y: y1, rotate: rotate2 }} className="absolute top-[70%] right-[45%] text-white blur-[3px] scale-125 opacity-40">
+            <motion.div style={{ y: y1, rotate: rotate2 }} className="absolute top-[70%] right-[45%] text-white blur-[3px] scale-125 opacity-40 will-change-transform">
                 <Hexagon className="w-16 h-16" />
             </motion.div>
         </div>

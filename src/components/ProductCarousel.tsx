@@ -70,7 +70,7 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
         <div className="relative w-full overflow-hidden py-6 cursor-grab active:cursor-grabbing" ref={containerRef}>
             <motion.div
                 style={{ x, width: "max-content" }}
-                className="flex gap-6 sm:gap-8"
+                className="flex gap-6 sm:gap-8 will-change-transform"
                 drag="x"
                 onDragStart={() => setIsDragging(true)}
                 onDragEnd={() => {

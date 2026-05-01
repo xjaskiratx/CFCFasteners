@@ -46,7 +46,6 @@ export default function RFQModal() {
                     }
                 } catch (err) {
                     // Ignore network errors (adblockers/CORS) silently
-                    console.warn("IP fetch skipped or blocked.");
                 }
             };
             fetchIp();
@@ -81,7 +80,6 @@ export default function RFQModal() {
                 setSubmitStatus("success");
             }
         } catch (err) {
-            console.warn("Failed to ping /api/rfq endpoint:", err);
             setSubmitStatus("error");
             // Continue to WhatsApp anyway so the user request isn't lost
         }
@@ -134,8 +132,9 @@ export default function RFQModal() {
                                     </div>
                                 )}
                                 <div>
-                                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Product</label>
+                                    <label htmlFor="rfq-product" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Product</label>
                                     <input
+                                        id="rfq-product"
                                         {...register("productName")}
                                         className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                                     />
@@ -144,16 +143,18 @@ export default function RFQModal() {
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Name</label>
+                                        <label htmlFor="rfq-name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Name</label>
                                         <input
+                                            id="rfq-name"
                                             {...register("name")}
                                             className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                                         />
                                         {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Company (Optional)</label>
+                                        <label htmlFor="rfq-company" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Company (Optional)</label>
                                         <input
+                                            id="rfq-company"
                                             {...register("company")}
                                             className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                                         />
@@ -162,8 +163,9 @@ export default function RFQModal() {
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Email Address</label>
+                                        <label htmlFor="rfq-email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Email Address</label>
                                         <input
+                                            id="rfq-email"
                                             type="email"
                                             {...register("email")}
                                             className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
@@ -171,8 +173,9 @@ export default function RFQModal() {
                                         {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">WhatsApp / Phone</label>
+                                        <label htmlFor="rfq-phone" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">WhatsApp / Phone</label>
                                         <input
+                                            id="rfq-phone"
                                             type="tel"
                                             {...register("phone")}
                                             className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
@@ -182,8 +185,9 @@ export default function RFQModal() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Estimated Quantity</label>
+                                    <label htmlFor="rfq-quantity" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Estimated Quantity</label>
                                     <input
+                                        id="rfq-quantity"
                                         {...register("quantity")}
                                         placeholder="e.g., 5000 pcs"
                                         className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
@@ -192,8 +196,9 @@ export default function RFQModal() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Additional Message</label>
+                                    <label htmlFor="rfq-message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Additional Message</label>
                                     <textarea
+                                        id="rfq-message"
                                         {...register("message")}
                                         rows={3}
                                         className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"

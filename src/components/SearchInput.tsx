@@ -37,6 +37,8 @@ export default function SearchInput() {
                 <Search size={18} />
             </div>
             <input
+                id="search-input-header"
+                name="q"
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
