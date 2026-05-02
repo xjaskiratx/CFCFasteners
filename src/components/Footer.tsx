@@ -15,7 +15,7 @@ export default function Footer() {
                         <Link href="/contact" className="text-sm font-semibold text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary-light transition-colors">
                             Contact Us
                         </Link>
-                        <a href={`tel:+${process.env.NEXT_PUBLIC_BUSINESS_PHONE}`} className="text-sm font-semibold text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary-light transition-colors">
+                        <a href="tel:+919464506000" className="text-sm font-semibold text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary-light transition-colors">
                             +91 94645 06000
                         </a>
                     </nav>
