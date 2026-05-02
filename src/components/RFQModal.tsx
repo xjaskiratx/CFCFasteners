@@ -85,8 +85,7 @@ export default function RFQModal() {
         }
 
         const text = `*New RFQ from CFC Fasteners Website*%0A%0A*Name:* ${data.name}%0A*Company:* ${data.company || 'N/A'}%0A*Email:* ${data.email}%0A*Phone:* ${data.phone}%0A*Product:* ${data.productName}%0A*Quantity:* ${data.quantity}%0A*Message:* ${data.message || 'N/A'}`;
-        const whatsappNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE;
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`; 
+        const whatsappUrl = `https://wa.me/919464506000?text=${text}`; 
         window.open(whatsappUrl, "_blank", "noopener,noreferrer");
         closeQuote();
     };

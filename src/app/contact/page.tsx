@@ -89,8 +89,7 @@ export default function ContactPage() {
 
         if (method === "whatsapp") {
             const text = `Hi, I'm ${data.name}.\n\n${data.message}`;
-            const whatsappNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE;
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+            const url = `https://wa.me/919464506000?text=${encodeURIComponent(text)}`;
             window.open(url, "_blank", "noopener,noreferrer");
         } else {
             // Formspree handles the email

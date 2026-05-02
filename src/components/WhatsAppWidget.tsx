@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function WhatsAppWidget() {
-    const whatsappNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE;
-    const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+    const whatsappUrl = `https://wa.me/919464506000`;
 
     return (
         <motion.a
