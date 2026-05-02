@@ -32,7 +32,7 @@ export default function RFQModal() {
     // Keep form in sync when prefill changes
     useEffect(() => {
         if (isOpen) {
-            reset({ productName: prefillProduct, name: "", email: "", phone: "+91 ", company: "", quantity: "", message: "" });
+            reset({ productName: prefillProduct, name: "", email: "", phone: "+91 94645 06000", company: "", quantity: "", message: "" });
             setSubmitStatus("idle");
 
             // Smart IP detection for country code

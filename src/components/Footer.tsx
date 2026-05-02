@@ -16,7 +16,7 @@ export default function Footer() {
                             Contact Us
                         </Link>
                         <a href={`tel:+${process.env.NEXT_PUBLIC_BUSINESS_PHONE}`} className="text-sm font-semibold text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary-light transition-colors">
-                            Call Us
+                            +91 94645 06000
                         </a>
                     </nav>
                 </div>

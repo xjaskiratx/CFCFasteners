@@ -30,7 +30,7 @@ export default function ContactPage() {
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<ContactFormValues>({
         resolver: zodResolver(contactSchema),
         defaultValues: {
-            phone: "+91 ",
+            phone: "+91 94645 06000",
             productName: "Contact Form Inquiry",
         }
     });
@@ -144,9 +144,9 @@ export default function ContactPage() {
                                 <div>
                                     <strong className="block text-zinc-900 dark:text-white mb-2 font-semibold text-sm">Phone Inquiries</strong>
                                     <div className="flex flex-col gap-1">
-                                        <a href="tel:+919464506000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 94645-06000</a>
-                                        <a href="tel:+919646506000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 96465-06000</a>
-                                        <a href="tel:+919464306000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 94643-06000</a>
+                                        <a href="tel:+919464506000" className="text-zinc-900 dark:text-white text-sm font-bold hover:text-primary transition-colors">+91 94645 06000</a>
+                                        <a href="tel:+919646506000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 96465 06000</a>
+                                        <a href="tel:+919464306000" className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-primary transition-colors">+91 94643 06000</a>
                                         <span className="text-zinc-500 text-[10px] mt-1">Mon-Sat, 10am - 10pm IST</span>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@ export default function ContactPage() {
                             ) : (
                                 <div>
                                     <label htmlFor="contact-phone" className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">WhatsApp Number *</label>
-                                    <input id="contact-phone" type="tel" {...register("phone")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="+91 98765 43210" />
+                                    <input id="contact-phone" type="tel" {...register("phone")} className="w-full px-5 h-11 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="+91 94645 06000" />
                                     {errors.phone && <p className="mt-1 text-xs text-red-500 ml-4">{errors.phone.message}</p>}
                                 </div>
                             )}
